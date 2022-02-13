@@ -1,0 +1,106 @@
+.big-content .center{
+   margin-left: 5vw;
+}
+
+.big-content .center .btn-order:hover{
+    background-color:#FA7347 ;
+ }
+ 
+
+.small{
+height: 70px;
+background-color: #1D3C60;
+}
+
+.smaller{
+   height: 100px;
+   background-color: #1D3C60;
+   }
+   
+.big-content .card{
+   min-height: 300px;
+}
+
+.create{
+   margin-top: 3vw;
+   margin-left: 2vw;
+}
+
+
+.create .form-group label{
+   display: inline-block;
+   width: 20%;
+
+}
+.create .form-group input{
+   display: inline-block;
+   width: 50%;
+   background-color: antiquewhite;
+}
+
+.create .form-group textarea{
+   display: inline-block;
+   width: 50%;
+   background-color: antiquewhite;
+   margin-left: 10vw;
+}
+
+.create .form-group .descr{
+   position: absolute;
+   margin-top: 26px;
+   
+   display: inline;
+}
+
+.create .text-center {
+
+  float: center;
+}
+
+.create .img-cont-outer{
+  min-height: 250px;
+   border: 2px solid black;
+   background-color:#FFFFFF ;
+   width: 100%;
+
+  
+ }
+
+ .create .img-cont-inner{
+ width: 100%;
+ display: inline-block;
+}
+
+.create .img-cont-inner img{
+   
+   width: 20%;
+ }
+
+
+
+
+ .tabl-cont{
+    width: 90%;
+    background-color: rgb(253, 250, 243);
+    margin-left: 5vw;
+    box-shadow: 0 1px 15px 1px rgba(39, 39, 39, 0.1);
+ }
+
+ .tabl-cont .resp{
+   max-width: 90%;
+   background-color: rgb(253, 250, 243);
+   margin-left: 4vw;
+   margin-top: -30px;
+   margin-bottom: 100px;
+   border-radius: 0.1875rem;
+   border: 0;
+} 
+.row1{
+   width: 100%;
+}
+.invoice-container{
+   background-color: aliceblue;
+   width: 50%;
+   margin: 0 auto;
+   position: absolute;
+}
