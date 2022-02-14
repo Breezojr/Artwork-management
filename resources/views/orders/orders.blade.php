@@ -8,6 +8,16 @@
 		 <div class=" small ">
 			</div>
 
+			@if (count($errors) > 0)
+  <div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+       @foreach ($errors->all() as $error)
+         <li>{{ $error }}</li>
+       @endforeach
+    </ul>
+  </div>
+@endif
        <div class="create">
 	   <form action="{{ route('orders.store') }}" method="POST" enctype="multipart/form-data">
             @csrf 
@@ -15,21 +25,12 @@
               <div class="col-lg-7 col-md-7">
                 <div class="form-group">
 					 <label>Artwork Title:</label>
-					 <input type="text" name="name" class="form-control" placeholder="Enter Title of the artwork orderd">
+					 <input type="text" name="title" class="form-control" placeholder="Enter Title of the artwork orderd">
 			    </div>
-				<div class="form-group">
-					<label>Select Designer:</label>
-					<select name="user_id" id="user_id">
-					  <option value="-1"> Select Designer</option>
-					  @foreach ($designers as $designer)
-					    <option value="{{ $designer->id}}">{{ $designer->name}} </option>
-					   @endforeach
-					</select>
-					
-				</div>
+		
                 <div class="form-group">
 					<label>Name of the Client:</label>
-					<input type="text" name="client_name" class="form-control" placeholder="Name of the Client">
+					<input type="text" name="name" class="form-control" placeholder="Name of the Client">
 				</div>
 				
                 <div class="form-group">
@@ -39,6 +40,10 @@
                 <div class="form-group">
 					<label>Phone Number:</label>
 					<input type="text" name="phon_no" class="form-control" placeholder="Phone number">
+				</div>
+				<div class="form-group">
+					<label>Address:</label>
+					<input type="text" name="address" class="form-control" placeholder="Phone number">
 				</div>
 				<div class="form-group">
 					<label>Price:</label>

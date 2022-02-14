@@ -238,3 +238,16 @@ background-color: #1D3C60;
  .buttonss .pdf, .email, .rp{
     display: inline;
  }
+
+.card-body table {
+   border-top: 2px solid black;
+   width: 100%;
+   margin-top: 1vw;
+}
+.card-body table thead{
+  height: 40px;
+}
+
+ .card-body td{
+    font-size: 10px;
+ }

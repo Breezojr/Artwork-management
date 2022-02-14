@@ -15,12 +15,9 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->onDelete('cascade')->onUpdate('cascade');
             $table->string('note');
-            $table->string('name');
-            $table->string('client_name');
-            $table->integer('phon_no')->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('title');
+            $table->foreignId('client_id')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('price', 10, 2);
             $table->text('description');
             $table->enum('status', ['Pending', 'Completed'])->default('Pending');

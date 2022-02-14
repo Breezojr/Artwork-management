@@ -11,10 +11,7 @@ class Order extends Model
     protected $fillable = [
         'note',
         'user_id',
-        'client_name',
-        'email',
-        'phon_no',
-        'name',
+        'title',
         'description',
         'price',
         'status',
@@ -25,8 +22,12 @@ class Order extends Model
         ];
       public $timestamps = true;
 
-      public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+       public function users()
+       {
+          return $this->belongsToMany(User::class);
+        }
+      public function client()
+      {
+          return $this->belongsTo(Client::class);
+        }
 }

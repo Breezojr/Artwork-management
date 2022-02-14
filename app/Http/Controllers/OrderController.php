@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Client;
 use App\Models\User;
 
 
@@ -13,9 +14,7 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        
         $data = Order::with('user')->get();
-        
         return view('orders.index',compact('data'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -25,18 +24,16 @@ class OrderController extends Controller
     {
         $designers = User::all();
         // $designers = User::role('Designer')->get();
-
         return view('orders.orders', ['designers'=>$designers]);
     }
     public function store(Request $request)
     {
         $request->validate([
             'note' => 'required',
-            'user_id' => 'required',
-            'client_name' => 'required',
             'email' => 'required',
             'phon_no' => 'required',
             'name' => 'required',
+            'title' => 'required',
             'price' => 'required',
             'description' => 'required',
             'image' => 'required|array',
@@ -54,17 +51,22 @@ class OrderController extends Controller
                 $imgData[] = $tempName;
             }
         }
+        $client = new Client;
+        $client->email = $request->email;
+        $client->phon_no = $request->phon_no;
+        $client->name = $request->name;
+        $client->address = $request->address;
+        $client->save();
         $artwork = new Order;
-        $artwork->client_name = $request->client_name;
-        $artwork->email = $request->email;
-        $artwork->phon_no = $request->phon_no;
+        $artwork->title = $request->title;
         $artwork->note = $request->note;
-        $artwork->user_id = $request->user_id;
-        $artwork->name = $request->name;
+        $artwork->client_id = $client->id;
         $artwork->price = $request->price;
         $artwork->description = $request->description;
         $artwork->image = $imgData;
         $artwork->save();
+        $user = User::find([1, 2]);
+        $artwork->users()->attach($user);
         return redirect()->route('home')
                     ->with('success','Order created successfully');
     }

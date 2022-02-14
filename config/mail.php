@@ -45,6 +45,13 @@ return [
             'auth_mode' => null,
         ],
 
+        'microsoft-graph' => [
+            'transport' => 'microsoft-graph',
+            'tenant' => env('MAIL_MSGRAPH_TENANT', 'common'),
+            'client' => env('MAIL_MSGRAPH_CLIENT'),
+            'secret' => env('MAIL_MSGRAPH_SECRET')
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],

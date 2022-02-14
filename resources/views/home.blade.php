@@ -16,13 +16,13 @@
      <div class="col-lg-3 col-md-3">
         <div class="card card-chart">
           <div class="card-header">
-            <h4 class="card-title">Artworks</h4>
+            <h4 class="card-title">Artworks Orders</h4>
             <div class="dropdown">
               <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                 <i class="now-ui-icons loader_gear"></i>
               </button>
               <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="{{ route('orders.create') }}">Create New Order</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <a class="dropdown-item" href="#">Something else here</a>
                 <a class="dropdown-item text-danger" href="#">Remove Data</a>
@@ -30,16 +30,31 @@
             </div>
           </div>
           <div class="card-body">
-          
-            
-              <a href="{{ route('orders.create') }}" class="btn  btn-round btn-order ">{{__('Create Artwork Order')}}</a>
-        
+         <table>
+           <thead>
+             <tr>
+               <th>Title</th>
+               <th>price</th>
+               <th>status</th>
+               <th>Designer(s)</th>
+             </tr>
+           </thead>
+           <tbody>
+           @foreach ($data as $data)
+             <tr>
+               <td>{{$data->title}}</td>
+               <td>{{$data->price}}</td>
+               <td>{{$data->status}}</td>
+               
+                <td> @foreach ($data->users as $data) {{$data->name}} <br>  @endforeach </td>
+               
+               
+             </tr>
+             @endforeach
+           </tbody>
+           </table>
           </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-            </div>
-          </div>
+         
         </div>
       </div>
       <div class="col-lg-4 col-md-4">
@@ -87,9 +102,7 @@
             </div>
           </div>
           <div class="card-body">
-             @foreach ($data as $data)
-             <p> {{$data -> name}}</p>
-             @endforeach
+          
           </div>
           <div class="card-footer">
             <div class="stats">

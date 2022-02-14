@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Artwork;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,8 @@ class HomeController extends Controller
     public function index()
     {
         $data = Order::all();
-        return view('home', ['data' => $data]);
+       
+        $data1 = Artwork::all();
+        return view('home', ['data' => $data,  'data1' => $data1]);
     }
 }
