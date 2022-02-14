@@ -8,22 +8,31 @@
 		 <div class=" small ">
 			</div>
 
-       <div >
-	   <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+       <div class="art-post">
+	       <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf 
-			<div class="row">
-
-              <div class="form-group">
-					<label>Select Order:</label>
+			<div class="row2">
+			@if (count($errors) > 0)
+  <div class="alert alert-danger">
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <ul>
+       @foreach ($errors->all() as $error)
+         <li>{{ $error }}</li>
+       @endforeach
+    </ul>
+  </div>
+@endif
+				<div class="sel">
+				  <label>Select Order:</label>
 					<select name="order_id" id="order_id">
 					  <option value="-1"> Select Order to work with</option>
 					  @foreach ($orders as $order)
-					    <option value="{{ $order->id}}">{{ $order->name}} </option>
+					    <option value="{{ $order->id}}">{{ $order->title}} </option>
 					   @endforeach
 					</select>
-				</div>
 				
-              
+				</div>
+               
 		    	<div class="user-image img-cont-outer  ">
 					    <div class="imgPreview img-cont-inner"> </div>
 			    	</div>            
@@ -33,14 +42,15 @@
 			        </div>
 
 
-					<div class="form-group">
-					<label class="descr" >Notes:</label>
-					<textarea name="notes" class="form-control" placeholder="Best Describe the work in a very clear way"></textarea>
+				<div class="note">
+			     	<label class="descr" >Notes:</label>
+					<textarea name="note"  placeholder="Best Describe the work in a very clear way"></textarea>
+		
 				</div>
-              
-              
-			     <div class=" text-center">
-			        	<button type="submit" class="btn btn-primary">Place an Order</button>
+					
+        
+			     <div class="text-center text-blw">
+			        	<button type="submit" class="btn btn-primary">Upload Artwork</button>
 		    	 </div>
           </form>
 	   </div>

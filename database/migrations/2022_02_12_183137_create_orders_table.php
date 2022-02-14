@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('client_id')->onDelete('cascade')->onUpdate('cascade');
             $table->decimal('price', 10, 2);
             $table->text('description');
-            $table->enum('status', ['Pending', 'Completed'])->default('Pending');
+            $table->boolean('status')->default(false);
             $table->json('image')->nullable();
             $table->timestamps();
         });

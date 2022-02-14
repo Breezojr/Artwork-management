@@ -14,8 +14,24 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        $data = Order::with('user')->get();
-        return view('orders.index',compact('data'))
+        $data2 = Order::with('client')->get();
+        foreach( $data2 as $data3){
+           $data4 = $data3->users;
+        }
+        $cid = auth()->user()->id;
+        $data = Order::with('client')->get();
+        foreach($data as $data1){
+            if($data1->status == false ){
+                $status1 = "Pending";
+            }
+            else if($data1->status == true ){
+                $status1 = "completed";
+            }
+            else {
+                $status1 = "System error";
+            }
+        };
+        return view('orders.index',compact('data', 'status1','cid', 'data4'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 

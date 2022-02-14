@@ -9,7 +9,6 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function index(){
-        $data = Post::all();
         return view("posts.index",['data' => $data])
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         ;
@@ -17,9 +16,8 @@ class PostController extends Controller
 
 
     public function create(){
-       $cid = auth()->user()->id;
-        
-        $orders = Order::where('user_id', $cid)->get();
+        $cid = auth()->user()->id;
+        $orders = Order::where('status',false)->get();
         return view("posts.create", ['orders'=>$orders]);
     }
 
@@ -30,6 +28,7 @@ class PostController extends Controller
             'order_id' => 'required',
             'note' => 'required',
             'image' => 'required',
+            'image.*' => 'mimes:jpg,png,jpeg,gif,svg|max:2048',
            
         ]);
         $imgData = [];
@@ -44,18 +43,14 @@ class PostController extends Controller
                 $imgData[] = $tempName;
             }
         }
-
-    
         $input = $request->all();
-
         $input['image'] = $imgData;
-
         $input['user_id'] = auth()->user()->id;
-
-    
         Post::create($input);
+        $status = Order::find($request->order_id);
+        $status->update(['status'=> true ]);      
 
-    
+      
         return redirect()->route('posts.index')
 
                         ->with('success','Product created successfully.');

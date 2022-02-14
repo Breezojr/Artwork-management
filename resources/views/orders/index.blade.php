@@ -12,74 +12,39 @@
  <div class="table-responsive resp">
               <table class="table">
                 <thead class=" text-primary">
-                  <th>
-                   Order Title
-                  </th>
-                  <th>
-                   Client Name
-                  </th>
-                  <th>
-                   Phone Number
-                  </th>
-                  <th>
-                   Email
-                  </th>
-                  <th>
-                   Price
-                  </th>
-                  <th>
-                   Designer 
-                  </th>
-                  <th>
-                  Description
-                  </th>
-                  <th>
-                  Note
-                  </th>
-                  <th>
-                  Photos
-                  </th>
-                  <th class="text-right">
-                    Status
-                  </th>
+                  <tr>
+                    <th> Order Title </th>
+                    <th> Client Name </th>
+                    <th> Phone Number </th>
+                    <th>  Email </th>
+                    <th> Price </th>
+                    <th> Designer </th>
+                    <th>  Description </th>
+                    <th>  Note </th>
+                    <th>  Photo </th> 
+                    <th class="text-right">Status</th>
+                  </tr>
+
                 </thead>
                 <tbody>
                   @foreach($data as $value)
-                  <tr>
-                    <td>
-                      {{ $value->name}}
-                    </td>
-                    <td>
-                      {{ $value->client_name}}
-                    </td>
-                    <td>
-                      {{ $value->phon_no}}
-                    </td>
-                    <td>
-                      {{ $value->email}}
-                    </td>
-                    <td>
-                      {{ $value->price}}
-                    </td>
-                    <td>
-                      {{ $value->user->name}}
-                    </td>
-                    <td>
-                      {{ $value->description}}
-                    </td>
-                    <td>
-                      {{ $value->note}}
-                    </td>
-                    <td><img src="{{ ($value->image)[0] }}" height="75" width="75" alt="" />
-                     
-                    </td>
-                    <td class="text-right">
-                    {{ $value->status}}
-                    </td>
-                  </tr>
+                   @foreach($data4 as $value2)
+                    @if( $cid == $value2->id)
+                    <tr>
+                      <td> {{ $value->title}} </td>
+                      <td> {{ $value->client->name}} </td>
+                      <td> {{ $value->client->phon_no}} </td>
+                      <td>{{ $value->client->email}} </td>
+                      <td>{{ $value->price}} </td>
+                      <td> @foreach ($value->users as $data) {{$data->name}} <br>  @endforeach </td>
+                      <td>{{ $value->description}}</td>
+                      <td>{{ $value->note}} </td>
+                      <td><img src="{{ ($value->image)[0] }}" height="75" width="75" alt="" /> </td>
+                      <td class="text-right">{{ $status1}}  </td>
+                    </tr>
+                   @endif
+                   @endforeach
                   @endforeach
-                  
-                   
                 </tbody>
               </table>
              

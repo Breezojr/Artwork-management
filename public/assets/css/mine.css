@@ -251,3 +251,105 @@ background-color: #1D3C60;
  .card-body td{
     font-size: 10px;
  }
+ .card-body tbody tr{
+   border-bottom: 1px solid rgb(206, 194, 194);
+}
+
+
+.art-post{
+   width: 90%;
+   padding-top: 4vw;
+   padding-left: 2vw;
+   background-color: white;
+   margin-bottom: 250px;
+   margin-top: 10px;
+   position:relative;
+   left: 5%;
+  
+}
+
+
+.art-post .sel{
+   margin-bottom: 50px;
+
+}
+
+
+
+.art-post label, select, textarea{
+  display: inline-block;
+}
+
+.art-post label{
+  width: 10%;
+ }
+
+ .art-post select, textarea{
+   width: 69%;
+}
+ 
+.art-post  textarea{
+   height: 90px;
+   border-radius: 0.87rem;
+   padding-left: 10px;
+   padding-top: 10px;
+   position: absolute;
+}
+ 
+.art-post  .note{
+  margin-top: 50px;
+}
+
+
+.art-post  .descr{
+   margin-top: 20px;
+}
+.art-post .img-cont-outer{
+   width: 70%;
+   height: 250px;
+   border: 1px solid rgb(151, 137, 137);
+   left: 10%;
+   position: relative;
+}
+
+.art-post .custom-file {
+   display: block;
+   left: 10%;
+   width: 70%;
+   position: relative;
+   margin: 5px;
+}
+
+.art-post .custom-file label{
+   width: 100%;
+  
+}
+
+.art-post .custom-file input{
+   width: 70%;
+   left: 10%;
+}
+ 
+.art-post .text-blw{
+  margin-top: 50px;
+  margin-left: -10vw;
+} 
+
+.create .img-cont-outer{
+   min-height: 250px;
+    border: 2px solid black;
+    background-color:#FFFFFF ;
+    width: 100%;
+ 
+   
+  }
+ 
+  .art-post .img-cont-inner{
+  width: 100%;
+  display: inline-block;
+ }
+ 
+ .art-post .img-cont-inner img{
+    
+    width: 20%;
+  }
