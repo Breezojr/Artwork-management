@@ -16,6 +16,8 @@ class Order extends Model
         'phon_no',
         'name',
         'description',
+        'price',
+        'status',
         'image' ,
       ];
       protected $casts = [

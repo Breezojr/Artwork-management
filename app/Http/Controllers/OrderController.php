@@ -37,6 +37,7 @@ class OrderController extends Controller
             'email' => 'required',
             'phon_no' => 'required',
             'name' => 'required',
+            'price' => 'required',
             'description' => 'required',
             'image' => 'required|array',
             'image.*' => 'mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -60,6 +61,7 @@ class OrderController extends Controller
         $artwork->note = $request->note;
         $artwork->user_id = $request->user_id;
         $artwork->name = $request->name;
+        $artwork->price = $request->price;
         $artwork->description = $request->description;
         $artwork->image = $imgData;
         $artwork->save();

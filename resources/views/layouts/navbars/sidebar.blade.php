@@ -29,14 +29,25 @@
         </a>
       </li>
       <li class = "@if ($activePage == 'art') active @endif">
-        <a href="{{ route('posts.create','artwork-workspace') }}">
+        <a href="{{ route('posts.index','artwork-workspace') }}">
           <i class="now-ui-icons location_map-big"></i>
           <p>{{ __('Art Workspace') }}</p> 
         </a>
       </li>
    
+
+      <li class = " @if ($activePage == 'completed') active @endif">
+        <a href="{{ route('completed') }}">
+          <i class="now-ui-icons design_bullet-list-67"></i>
+          <p>{{ __('Completed Artworks') }}</p>
+        </a>
+      </li>
+
+
+
+
       <li class = " @if ($activePage == 'invoice') active @endif">
-        <a href="{{ route('invoice.index','invoice') }}">
+        <a href="{{ route('invoice.index') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>
           <p>{{ __('Invoice') }}</p>
         </a>

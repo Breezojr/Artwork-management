@@ -30,6 +30,9 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 	Route::resource('invoice', InvoiceController::class);
+	Route::get('generate-pdf', [InvoiceController::class, 'generatePDF'])->name('pdf');
+	Route::get('completed', [InvoiceController::class, 'completed'])->name('completed');
+	Route::get('/bill/{id}', [InvoiceController::class, 'bill'])->name('bill');
 });
 
 Route::get('/', function () {

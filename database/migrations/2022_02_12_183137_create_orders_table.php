@@ -21,7 +21,9 @@ class CreateOrdersTable extends Migration
             $table->string('client_name');
             $table->integer('phon_no')->nullable();
             $table->string('email')->unique()->nullable();
+            $table->decimal('price', 10, 2);
             $table->text('description');
+            $table->enum('status', ['Pending', 'Completed'])->default('Pending');
             $table->json('image')->nullable();
             $table->timestamps();
         });

@@ -41,6 +41,10 @@
 					<input type="text" name="phon_no" class="form-control" placeholder="Phone number">
 				</div>
 				<div class="form-group">
+					<label>Price:</label>
+					<input type="text" name="price" class="form-control" placeholder="Price">
+				</div>
+				<div class="form-group">
 					<label class="descr" >Description:</label>
 					<textarea name="description" class="form-control" placeholder="Best Describe the work in a very clear way"></textarea>
 				</div>

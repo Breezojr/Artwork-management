@@ -1,32 +1,55 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
+use App\Models\Order;
+use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class InvoiceController extends Controller
 {
-    public function index(){
-        return view("invoice.index");
+
+    public function completed(Request $request){
+        $data = Order::with('user')->get();
+        return view('invoice.completed',compact('data'))
+        ->with('i', ($request->input('page', 1) - 1) * 5);
     }
+
+
+
+    public function show($id){
+        $data = Order::with('user')->find($id);
+        $date = Carbon::now();
+        $quantity = 1;
+        $subtotal = Order::where('user_id',$id)->find($id);
+        $total = $quantity * $data->price;
+        return view("invoice.index",compact('data', 'date', 'quantity', 'total', 'subtotal'));
+
+    }
+
+    public function bill($id){
+        $data = Order::with('user')->find($id);
+        return view("invoice.index",compact('data'));
+
+    }
+
 
 
     public function create(){
        $cid = auth()->user()->id;
-        
         $orders = Order::where('user_id', $cid)->get();
         return view("posts.create", ['orders'=>$orders]);
     }
 
+
+
     public function store(Request $request){
-
         request()->validate([
-
             'order_id' => 'required',
             'note' => 'required',
             'image' => 'required',
-           
         ]);
         $imgData = [];
         if(count($request->image)) {
@@ -40,20 +63,28 @@ class InvoiceController extends Controller
                 $imgData[] = $tempName;
             }
         }
-
-    
         $input = $request->all();
-
         $input['image'] = $imgData;
-
         $input['user_id'] = auth()->user()->id;
-
-    
         Post::create($input);
-
-    
         return redirect()->route('posts.index')
-
                         ->with('success','Product created successfully.');
     }
+
+
+
+
+    public function generatePDF()
+        {
+            $data = [
+                'title' => 'Welcome to ItSolutionStuff.com',
+                'date' => date('m/d/Y')
+            ];
+            $pdf = PDF::loadView('invoice', $data);
+            return $pdf->download('invoice.pdf');
+
+        }
 }
+
+
+

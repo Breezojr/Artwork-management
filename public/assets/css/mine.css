@@ -97,10 +97,144 @@ background-color: #1D3C60;
 } 
 .row1{
    width: 100%;
+   
 }
 .invoice-container{
+   margin-top: 50px;
    background-color: aliceblue;
-   width: 50%;
-   margin: 0 auto;
-   position: absolute;
+   width: 60%;
+   position: relative;
+   left: 20%;
+   margin-bottom: 200px;
+   min-height: 550px;
 }
+.invoice-container .in-header{
+   background-color: rgb(116, 162, 202);
+   
+}
+.invoice-container .in-header .left{
+   display: inline-block;
+   margin-left: 20px;
+   margin-top: 20px;
+   
+}
+
+.invoice-container .in-header .right{
+   margin-top: 10px;
+   float:right;
+   right: 20px;
+   position: relative;
+}
+
+.invoice-container .in-header .right p{
+   height: 5px;
+}
+
+
+.invoice-container .in-header .right .right1{
+   display: inline-block;
+   margin-right: 30px;
+}
+.invoice-container .in-header .right .right2{
+   display: inline-block;
+}
+
+
+.invoice-container .mini-body .left .left1{
+   float: left;
+   margin-right: 70px;
+   margin-left:20px;
+}
+
+.invoice-container .mini-body .left .left2{
+   display: inline-block;
+}
+
+.invoice-container .mini-body .left{
+   display: inline-block;
+}
+.invoice-container .mini-body .right{
+   float: right;
+   right: 20px;
+   position: relative;
+}
+
+.invoice-container .mini-body p{
+  height: 5px;
+}
+
+.invoice-container .mini-body h4{
+   height: 20px;
+   margin-bottom: 10px;
+ }
+
+ .max-body {
+   margin-top: 50px;
+ }
+ .max-body .table-container{
+   width:90%;
+   left:4%;
+   position: relative;
+ }
+.max-body .min-tab{
+  border-top: 3px blue solid;
+  width: 100%;
+}
+
+.max-body .min-tab  thead {
+   padding-top: 0px;
+   height: 50px;
+ }
+
+.max-body .min-tab  thead tr th{
+   padding-left: 10px;
+   padding-top: 0px;
+ }
+
+ .max-body .min-tab  tbody tr{
+    border-bottom: 1px solid rgb(221, 217, 217);
+ }
+ 
+ .max-body .min-tab  tbody tr td{
+   padding-left: 10px;
+   padding-top: 0px;
+ }
+ .invoice-container .subtotal1{
+     height: 150px;
+  }
+
+ .invoice-container .subtotal{
+      margin-top: 50px;
+      width: 40%;
+      right: 20px;
+      position: relative;
+      float: right;
+ }
+
+
+ .invoice-container .subtotal p{
+  height: 5px;
+}
+
+
+
+ .invoice-container .subtotal .left{
+  display: inline-block;
+ }
+
+ .invoice-container .subtotal .right{
+  float: right;
+  
+ }
+
+
+ .buttonss {
+   margin-top: 1.5vw;
+   width: 40%;
+   float: right;
+}
+
+
+ .buttonss .pdf, .email, .rp{
+    display: inline;
+ }

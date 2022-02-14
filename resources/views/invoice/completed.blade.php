@@ -1,7 +1,7 @@
 @extends('layouts.app3', [
     'namePage' => 'ARTWORK ORDERS',
     'class' => 'login-page sidebar-mini ',
-    'activePage' => 'order',
+    'activePage' => 'completed',
     'backgroundImage' => asset('now') . "/img/bg14.jpg",
 ])
 @section('content')
@@ -42,6 +42,9 @@
                   <th class="text-right">
                     Status
                   </th>
+                  <th class="text-right">
+                   
+                  </th>
                 </thead>
                 <tbody>
                   @foreach($data as $value)
@@ -75,6 +78,10 @@
                     </td>
                     <td class="text-right">
                     {{ $value->status}}
+                    </td>
+                    <td >
+                      <a class="btn btn-primary" href="{{ route('invoice.show', $value->id ) }}">Generate Bill in TZS</a> 
+                      <a class="btn btn-primary" href="#">Generate Bill in USD</a> 
                     </td>
                   </tr>
                   @endforeach
