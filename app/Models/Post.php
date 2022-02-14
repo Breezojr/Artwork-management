@@ -18,8 +18,12 @@ class Post extends Model
       protected $casts = [
         'image' => 'json'
         ];
-        public function order()
+       public function order()
         {
             return $this->belongsTo(Order::class);
+        }
+        public function user()
+        {
+            return $this->belongsTo(User::class);
         }
 }

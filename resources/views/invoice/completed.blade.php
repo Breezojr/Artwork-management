@@ -9,8 +9,8 @@
 <div class="small smaller">
   </div>
  <div class="tabl-cont">
- <div class="table-responsive resp">
-              <table class="table">
+      <div class="table-responsive resp">
+            <table class="table">
                 <thead class=" text-primary">
                   <th>
                    Order Title
@@ -39,9 +39,9 @@
                   <th>
                   Photos
                   </th>
-                  <th class="text-right">
+                  <!-- <th class="text-right">
                     Status
-                  </th>
+                  </th> -->
                   <th class="text-right">
                    
                   </th>
@@ -50,22 +50,24 @@
                   @foreach($data as $value)
                   <tr>
                     <td>
-                      {{ $value->name}}
+                      {{ $value->title}}
                     </td>
                     <td>
-                      {{ $value->client_name}}
+                      {{ $value->client->name}}
                     </td>
                     <td>
-                      {{ $value->phon_no}}
+                      {{ $value->client->phon_no}}
                     </td>
                     <td>
-                      {{ $value->email}}
+                      {{ $value->client->email}}
                     </td>
                     <td>
                       {{ $value->price}}
                     </td>
                     <td>
-                      {{ $value->user->name}}
+                      @foreach($value->users as $value1)
+                       {{ $value1->name}}
+                      @endforeach
                     </td>
                     <td>
                       {{ $value->description}}
@@ -76,9 +78,9 @@
                     <td><img src="{{ ($value->image)[0] }}" height="75" width="75" alt="" />
                      
                     </td>
-                    <td class="text-right">
+                    <!-- <td class="text-right">
                     {{ $value->status}}
-                    </td>
+                    </td> -->
                     <td >
                       <a class="btn btn-primary" href="{{ route('invoice.show', $value->id ) }}">Generate Bill in TZS</a> 
                       <a class="btn btn-primary" href="#">Generate Bill in USD</a> 

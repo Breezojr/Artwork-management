@@ -7,12 +7,23 @@ use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use DB;
 
 class InvoiceController extends Controller
 {
 
+
+
+    public function index(Request $request){
+        $data = Order::with('client')->where('status',true)->get();
+        return view('invoice.index',compact('data'))
+        ->with('i', ($request->input('page', 1) - 1) * 5);
+    }
+
+
+
     public function completed(Request $request){
-        $data = Order::with('user')->get();
+        $data = Order::with('client')->where('status',true)->get();
         return view('invoice.completed',compact('data'))
         ->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -20,12 +31,11 @@ class InvoiceController extends Controller
 
 
     public function show($id){
-        $data = Order::with('user')->find($id);
+        $data = Order::with('client')->find($id);
         $date = Carbon::now();
         $quantity = 1;
-        $subtotal = Order::where('user_id',$id)->find($id);
         $total = $quantity * $data->price;
-        return view("invoice.index",compact('data', 'date', 'quantity', 'total', 'subtotal'));
+        return view("invoice.show",compact('data', 'date', 'quantity', 'total', ));
 
     }
 
@@ -63,10 +73,21 @@ class InvoiceController extends Controller
                 $imgData[] = $tempName;
             }
         }
+        $data = Invoice::all();
+        if($data){
+           $last3 = DB::table('invoices')->latest('id')->first();
+           $status = Invoice::find($last3);
+           $invoice_number1 = $status->invoice_number++;
+        }
+        else{
+            $invoice_number1 = 1;
+        }
+
         $input = $request->all();
         $input['image'] = $imgData;
+        $input['invoice_number'] = $invoice_number1;
         $input['user_id'] = auth()->user()->id;
-        Post::create($input);
+        Invoice::create($input);
         return redirect()->route('posts.index')
                         ->with('success','Product created successfully.');
     }

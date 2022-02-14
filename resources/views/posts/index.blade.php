@@ -26,23 +26,27 @@
               <thead>
                 <tr>
                 <th>No</th>
-                <th>Name</th>
-             
+                <th>Artwotk Title</th>
+                <th>Designer Name</th>
+                <th>Notes</th>
+                <th>Photo(s)</th>
                 </tr>
               </thead>
               <tfoot>
               <tr>
                 <th>No</th>
-                <th>Name</th>
-                
+                <th>Artwotk Title</th>
+                <th>Designer Name</th>
+                <th>Notes</th>
+                <th>Photo(s)</th> 
                 </tr>
               </tfoot>
               <tbody>
               @foreach ($data as $key => $post)
           <tr>
           <td>{{ ++$i }}</td>
-          <td>{{ $post->user_id }}</td>
-          <td>{{ $post->artwork_id }}</td>
+          <td>{{ $post->order->title }}</td>
+          <td>{{ $post->user->name }}</td>
           <td>{{ $post->note }}</td>
           <td><img src="{{ ($post->image)[0] }}" height="75" width="75" alt="" />
          

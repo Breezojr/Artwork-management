@@ -15,6 +15,7 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->integer('invoice_number');
             $table->foreignId('user_id')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('order_id')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('artwork_id')->onDelete('cascade')->onUpdate('cascade');

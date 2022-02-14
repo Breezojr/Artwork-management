@@ -1,5 +1,5 @@
 @extends('layouts.app3', [
-    'namePage' => 'INVOICE',
+    'namePage' => 'ARTWORK ORDERS',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'invoice',
     'backgroundImage' => asset('now') . "/img/bg14.jpg",
@@ -8,115 +8,46 @@
 
 <div class="small smaller">
   </div>
-  
-<div class="row1">
-  <div class="invoice-container">
-      <div class="in-header">
-         <div class="left">
-            <h1>Invoice</h1>
-          </div>
-          <div class="right">
-            <div class="right1"> 
-              <p>0746154809</p>
-              <p>artwork@gmail.com</p>
-              <p>artwork.co.tz</p>
-            </div>
-            <div class="right2">
-              <p>PPF Tower</p>
-              <p>Dar es salaam</p>
-              <p>Tanzania</p>
-            </div>
-          </div>
-       </div>
+ <div class="tabl-cont">
+ <div class="table-responsive resp">
+              <table class="table">
+                <thead class=" text-primary">
+                  <tr>
+                    <th> Order Title </th>
+                    <th> Client Name </th>
+                    <th> Phone Number </th>
+                    <th>  Email </th>
+                    <th> Price </th>
+                    <th> Designer </th>
+                    <th>  Description </th>
+                    <th>  Note </th>
+                    <th>  Photo </th> 
+                    <th class="text-right">Status</th>
+                  </tr>
 
-
-      <div class="mini-body">
-         <div class="left">
-           <div class="left1">
-              <h4>Billed to</h4>
-              <p>{{$data ->name}}</p>
-              <p> {{$data ->email}}</p>
-              <p>{{$data ->phon_no}}</p>
-              <p>Dar es salaam</p>
-           </div>
-           <div class="left2">
-              <div class="bil-no">
-                 <h4>Bill No</h4>
-                 <p>00000</p>
-              </div>
-              <div class="isue-date">
-                 <h4>Isue date</h4>
-                 <p>{{ $date }}</p>
-              </div>
-            </div>
-         </div>
-         <div class="right">
-            <h4>invoice Total</h4>
-            <p>Tzs. {{ $total }}</p>
-         </div>
-      </div>
-
-
-
-      <div class="max-body">
-        <div class="table-container">
-          <table class="min-tab">
-            <thead>
-              <tr>
-                <th width="40%">Description</th>
-                <th>Unity Cost</th>
-                <th>Quantity</th>
-                <th>price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td width="40%">{{$data ->name}}</td>
-                <td>{{$data ->price}}</td>
-                <td>{{$quantity}}</td>
-                <td>{{$total}} </td>
-              </tr>
-              
-            </tbody>
-          </table>
-        </div>
-      <div>
-
-
-   <div class="subtotal1">
-     <div class="subtotal">
-       <div class="left">
-          <p>subtotal</p>
-          <p>Tax</p>
-          <p>Total</p>
-          <p>Amount Due</p>
-       </div>
-       <div class="right">
-          <p>Tzs. {{ $total }}</p>
-          <p>18%</p>
-          <p>Tzs. {{ $total }}</p>
-          <p>Tzs. {{ $total }}</p>
-       </div>
-     </div>
-   </div>
-
-
-
-
-
-   </div>
-</div>
-
-    <div class="buttonss">
-        <div class="pdf">
-          <a href="{{ route('pdf') }}" class="btn btn-primary"> Print </a>
-        </div>
-        <div class="email">
-          <a href="{{ route('pdf') }}" class="btn btn-primary"> Send Email</a>
-        </div>
-        <div class="rp">
-         <a href="{{ route('pdf') }}" class="btn btn-primary"> Request Payment </a>
-        </div>  
-    </div>
+                </thead>
+                <tbody>
+                  @foreach($data as $value)
+                
+                    <tr>
+                      <td> {{ $value->title}} </td>
+                      <td> {{ $value->client->name}} </td>
+                      <td> {{ $value->client->phon_no}} </td>
+                      <td>{{ $value->client->email}} </td>
+                      <td>{{ $value->price}} </td>
+                      <td> @foreach ($value->users as $data) {{$data->name}} <br>  @endforeach </td>
+                      <td>{{ $value->description}}</td>
+                      <td>{{ $value->note}} </td>
+                      <td><img src="{{ ($value->image)[0] }}" height="75" width="75" alt="" /> </td>
+                      <td class="text-right">{{ $value->status}}  </td>
+                    </tr>
+                   
+                  @endforeach
+                </tbody>
+              </table>
+             
+  </div>
+ </div>
+           
   @endsection
    
