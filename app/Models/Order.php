@@ -26,6 +26,12 @@ class Order extends Model
        {
           return $this->belongsToMany(User::class);
         }
+
+        public function invoices()
+        {
+           return $this->hasMany(Invoice::class);
+         }
+
       public function client()
       {
           return $this->belongsTo(Client::class);

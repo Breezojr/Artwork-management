@@ -42,7 +42,7 @@
            <div class="left2">
               <div class="bil-no">
                  <h4>Bill No</h4>
-                 <p>00000</p>
+                 <p>{{$data->invoice_number}}</p>
               </div>
               <div class="isue-date">
                  <h4>Isue date</h4>
@@ -115,7 +115,7 @@
           <a href="{{ route('pdf') }}" class="btn btn-primary"> Send Email</a>
         </div>
         <div class="rp">
-         <a href="{{ route('pdf') }}" class="btn btn-primary"> Request Payment </a>
+         <a href="{{ route('request-payment', $data->id) }}" class="btn btn-primary"> Request Payment </a>
         </div>  
     </div>
   @endsection

@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
 	Route::resource('invoice', InvoiceController::class);
 	Route::get('generate-pdf', [InvoiceController::class, 'generatePDF'])->name('pdf');
+	Route::get('/request-payment/{id}', [InvoiceController::class, 'requestPayment'])->name('request-payment');
 	Route::get('completed', [InvoiceController::class, 'completed'])->name('completed');
 	Route::get('/bill/{id}', [InvoiceController::class, 'bill'])->name('bill');
 });

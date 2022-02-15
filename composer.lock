@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1c8b9b5efc8b135aa5777e040fe893ad",
+    "content-hash": "2679685b3295b499a21c94313bfc3150",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -197,6 +197,65 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "bryceandy/laravel-selcom",
+            "version": "v0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bryceandy/laravel-selcom.git",
+                "reference": "202ceb7d20c6df9c6dfb78d46543666e1598121c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bryceandy/laravel-selcom/zipball/202ceb7d20c6df9c6dfb78d46543666e1598121c",
+                "reference": "202ceb7d20c6df9c6dfb78d46543666e1598121c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "guzzlehttp/guzzle": "^7.3",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "orchestra/testbench": "^6.19"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bryceandy\\Selcom\\SelcomBaseServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bryceandy\\Selcom\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "bryceandy",
+                    "email": "hello@bryceandy.com"
+                }
+            ],
+            "description": "Laravel package that integrates with Selcom APIs (Utility Payments, Wallet Cashin, Agent Cashout, C2B, Qwiksend, VCN, Checkout & International Money Transfer",
+            "support": {
+                "issues": "https://github.com/bryceandy/laravel-selcom/issues",
+                "source": "https://github.com/bryceandy/laravel-selcom/tree/v0.0.4"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/bryceandy",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2021-12-25T11:54:46+00:00"
         },
         {
             "name": "dflydev/dot-access-data",

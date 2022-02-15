@@ -17,4 +17,18 @@ class Invoice extends Model
       protected $casts = [
         'image' => 'json'
         ];
-}
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }
+
+        public function client()
+        {
+            return $this->belongsTo(Client::class);
+          }
+
+        public function order()
+        {
+            return $this->belongsTo(Order::class);
+          }
+  }
