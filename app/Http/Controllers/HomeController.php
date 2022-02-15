@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
-use App\Models\Artwork;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -25,9 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Order::all();
-       
-        $data1 = Artwork::all();
-        return view('home', ['data' => $data,  'data1' => $data1]);
+        $data = Order::with('client')->get();
+        $designers = User::role('Designer')->get();
+        return view('home', ['data' => $data, 'designers'=> $designers]);
     }
 }

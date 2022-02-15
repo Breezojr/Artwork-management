@@ -40,7 +40,22 @@
                       <td>{{ $value->description}}</td>
                       <td>{{ $value->note}} </td>
                       <td><img src="{{ ($value->image)[0] }}" height="75" width="75" alt="" /> </td>
-                      <td class="text-right">{{ $status1}}  </td>
+
+                      @if($data)
+                          @if($data->status == true)
+                          <td class="text-right"> Completed </td>
+                          @elseif($data->status == false)
+                          <td class="text-right"> Pending </td>
+                          @else 
+                          <td class="text-right"> System Error </td>
+                          @endif 
+                          @else
+                          <td class="text-right"> {{$data->status}} </td>
+                      @endif
+                    
+
+
+                      
                     </tr>
                    @endif
                    @endforeach

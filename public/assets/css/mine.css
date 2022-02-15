@@ -1,11 +1,69 @@
+.big-content{
+   min-height: 900px;
+}
+
 .big-content .center{
+   margin-top: 2vw;
    margin-left: 5vw;
 }
 
-.big-content .center .btn-order:hover{
-    background-color:#FA7347 ;
- }
+
+.big-content .nav-tabs{
+
+   height: 70px;
+}
+
+
+.big-content .tab-header a{
+   padding-top: 20px;
+   padding-bottom: 20px;
+   margin-top: 10px;
+   padding-left: 20px;
+   padding-right: 20px;
+   display: inline-block;
+   height: 60px;
+   border-top: 1px transparent #dee2e6 ;
+   border-left: 1px transparent #dee2e6 ;
+   border-right: 1px transparent #dee2e6 ;
+}
+
+
+.big-content .tab-header a:focus{
  
+   border-top: 1px solid #dee2e6 ;
+   border-left: 1px solid #dee2e6 ;
+   border-right: 1px solid #dee2e6;
+   background-color: #FFFFFF;
+  
+ }
+.big-content .tab-body li{
+   list-style: none;
+}
+
+
+
+.designer-tab .tab-content{
+   margin-top: 12px;
+}
+
+
+
+
+/* .show {
+   display: block !important;
+} */
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+   color: #555;
+   cursor: default;
+   background-color: #fff;
+   border: 1px solid #ddd;
+       border-bottom-color: rgb(221, 221, 221);
+   border-bottom-color: transparent;
+}
+
+
+
 
 .small{
 height: 70px;
@@ -20,6 +78,17 @@ background-color: #1D3C60;
 .big-content .card{
    min-height: 300px;
 }
+
+.designer-tab{
+   left:10%;
+   position: relative;
+   width: 80%;
+}
+
+
+
+
+
 
 .create{
    margin-top: 3vw;
@@ -369,4 +438,15 @@ background-color: #1D3C60;
  .art-post .img-cont-inner img{
     
     width: 20%;
+  }
+
+
+  .designer-tab{
+     left:10%;
+     position: relative;
+     width: 80%;
+  } .designer-tab{
+     left:10%;
+     position: relative;
+     width: 80%;
   }

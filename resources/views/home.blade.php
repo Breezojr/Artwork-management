@@ -44,11 +44,20 @@
              <tr>
                <td>{{$data->title}}</td>
                <td>{{$data->price}}</td>
-               <td>{{$data->status}}</td>
-               
+
+                  @if($data)
+                    @if($data->status == true)
+                    <td> Completed </td>
+                    @elseif($data->status == false)
+                    <td> Pending </td>
+                    @else 
+                    <td> System Error </td>
+                    @endif 
+                    @else
+                    {{$data->status}}
+                  @endif
+
                 <td> @foreach ($data->users as $data) {{$data->name}} <br>  @endforeach </td>
-               
-               
              </tr>
              @endforeach
            </tbody>
@@ -111,258 +120,38 @@
           </div>
         </div>
       </div>
-      <!-- <div class="col-lg-4 col-md-6">
-        <div class="card card-chart">
-          <div class="card-header">
-            <h5 class="card-category">Email Statistics</h5>
-            <h4 class="card-title">24 Hours Performance</h4>
-          </div>
-          <div class="card-body">
-            <div class="chart-area">
-              <canvas id="barChartSimpleGradientsNumbers"></canvas>
-            </div>
-          </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
-            </div>
-          </div>
-        </div>
-      </div> -->
+   
     </div>
     <div class="row">
-      <div class="col-md-6">
-        <div class="card  card-tasks">
-          <div class="card-header ">
-            <h5 class="card-category">Backend development</h5>
-            <h4 class="card-title">Tasks</h4>
-          </div>
-          <div class="card-body ">
-            <div class="table-full-width table-responsive">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" checked>
-                          <span class="form-check-sign"></span>
-                        </label>
-                      </div>
-                    </td>
-                    <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
-                    <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </button>
-                      <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox">
-                          <span class="form-check-sign"></span>
-                        </label>
-                      </div>
-                    </td>
-                    <td class="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                    <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </button>
-                      <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" checked>
-                          <span class="form-check-sign"></span>
-                        </label>
-                      </div> 
-                    </td>
-                    <td class="text-left">Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                    </td>
-                    <td class="td-actions text-right">
-                      <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                        <i class="now-ui-icons ui-2_settings-90"></i>
-                      </button>
-                      <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                        <i class="now-ui-icons ui-1_simple-remove"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card-footer ">
-            <hr>
-            <div class="stats">
-              <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="col-md-6">
+     
+
+      <div class=" designer-tab">
         <div class="card">
           <div class="card-header">
-            <h5 class="card-category">All Persons List</h5>
-            <h4 class="card-title"> Employees Stats</h4>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
-                <thead class=" text-primary">
-                  <th>
-                    Name
-                  </th>
-                  <th>
-                    Country
-                  </th>
-                  <th>
-                    City
-                  </th>
-                  <th class="text-right">
-                    Salary
-                  </th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      Dakota Rice
-                    </td>
-                    <td>
-                      Niger
-                    </td>
-                    <td>
-                      Oud-Turnhout
-                    </td>
-                    <td class="text-right">
-                      $36,738
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Minerva Hooper
-                    </td>
-                    <td>
-                      Curaçao
-                    </td>
-                    <td>
-                      Sinaai-Waas
-                    </td>
-                    <td class="text-right">
-                      $23,789
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Sage Rodriguez
-                    </td>
-                    <td>
-                      Netherlands
-                    </td>
-                    <td>
-                      Baileux
-                    </td>
-                    <td class="text-right">
-                      $56,142
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Doris Greene
-                    </td>
-                    <td>
-                      Malawi
-                    </td>
-                    <td>
-                      Feldkirchen in Kärnten
-                    </td>
-                    <td class="text-right">
-                      $63,542
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      Mason Porter
-                    </td>
-                    <td>
-                      Chile
-                    </td>
-                    <td>
-                      Gloucester
-                    </td>
-                    <td class="text-right">
-                      $78,615
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-category">All Persons List</h5>
             <h4 class="card-title"> Designers</h4>
           </div>
           <div class="card-body">
-            <div class="table-responsive">
-              
-    <div role="tabpanel">
-      <ul class="nav nav-tabs" role="tablist">
-          
-            <li role="presentation" class="1">
-              <a href="#home1" aria-controls="home" role="tab" data-toggle="tab">moja</a>
-            </li>
-            <li role="presentation" class="2">
-              <a href="#home2" aria-controls="home" role="tab" data-toggle="tab">mbili</a>
-            </li>
-            <li role="presentation" class="3">
-              <a href="#home3" aria-controls="home" role="tab" data-toggle="tab">tatu</a>
-            </li>
-        
-      </ul>
-      <div class="tab-content">
-      
-            <div role="tabpanel" class="tab-pane 1" id="home1" class="active">
-              <ul>
-               
-                   <li>sampinde</li>
-                   <li>sampinde</li>
-                   <li>sampinde</li>
-              
+            <div role="tabpanel" >
+              <ul  class="nav nav-tabs" role="tablist">
+                  @foreach ($designers as $item)
+                    <li  id="{{$item->id}}" role="presentation" class="tab-header {{ $item->id == 1 ? 'active' : '' }}">
+                      <a href="#home{{ $item->id }}"   aria-controls="home" role="tab" data-toggle="tab">{{ $item->name }}</a>
+                    </li>
+                    
+                  @endforeach
               </ul>
-            </div>
-            <div role="tabpanel" class="tab-pane 2" id="home2" class="active">
-              <ul>
-                  <li>sampinde1111</li>
-                   <li>sampinde1111</li>
-                   <li>sampinde111</li>
-              </ul>
-            </div>
-            <div role="tabpanel" class="tab-pane 3" id="home3" class="active">
-              <ul>
-                  <li>sampinde2222</li>
-                   <li>sampinde2222</li>
-                   <li>sampinde2222</li>
-              </ul>
-            </div>
-
-     
-      </div>
-    </div>
+              <div class="tab-content">
+              @foreach ($designers as $item)
+                    <div role="tabpanel" class="tab-pane  {{ $item->id == 1 ? 'active' : '' }} tab-body"  id="home{{ $item->id }}" class="active">
+                      <ul class="">
+                        @foreach ($item->posts as $element)
+                          <li > <img src="{{ ($element->image)[0] }}" height="75" width="75" alt="" /> </li>
+                        @endforeach
+                      </ul>
+                    </div>
+              @endforeach
+               </div>
+             </div>
             </div>
           </div>
         </div>
@@ -377,8 +166,16 @@
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
-      demo.initDashboardPageCharts();
-
+      demo.initDashboardPageCharts()
     });
   </script>
+
+<script>
+     function changestyle(id){
+       var element = document.getElementById(id)
+       element.style.display ='none';
+     }
+  
+  </script>
+
 @endpush
