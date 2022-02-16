@@ -112,7 +112,7 @@
           <a href="{{ route('pdf') }}" class="btn btn-primary"> Print </a>
         </div>
         <div class="email">
-          <a href="{{ route('pdf') }}" class="btn btn-primary"> Send Email</a>
+          <a href="{{ route('send-email') }}" class="btn btn-primary"> Send Email</a>
         </div>
         <div class="rp">
          <a href="{{ route('request-payment', $data->id) }}" class="btn btn-primary"> Request Payment </a>

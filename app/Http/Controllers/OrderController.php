@@ -15,13 +15,16 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $data2 = Order::with('client')->get();
-        foreach( $data2 as $data3){
-           $data4 = $data3->users;
-          }
+
+         foreach( $data2 as $data3){
+             $data4 = $data3->users;
+           }
+
         $cid = auth()->user()->id;
-        $data = Order::with('client')->get();
+        $data = Order::with('client')->latest()->paginate(15);
+
         return view('orders.index',compact('data','cid', 'data4'))
-        ->with('i', ($request->input('page', 1) - 1) * 5);
+        ->with('i', ($request->input('page', 1) - 1) * 15);
     }
 
 

@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\User;
 use Bryceandy\Selcom\Facades\Selcom;
 use Barryvdh\DomPDF\Facade\Pdf;
+use  MsGraph;
 use DB;
 
 class InvoiceController extends Controller
@@ -111,30 +112,37 @@ class InvoiceController extends Controller
             ];
             $pdf = PDF::loadView('invoice', $data);
             return $pdf->download('invoice.pdf');
-
         }
+
 
 
         public function requestPayment($id)
         {
-         $data = Invoice::with('order')->find($id);
+         $data = Order::with('client')->find($id);
             $payment_data = [
-                // 'name' => $data->client->name, 
-                // 'email' => $data->client->email,
-                // 'phone' => $data->client->phon_no,
-                   'amount' => $data->order->price,
-                // 'transaction_id' => $data->client->id,
-                'no_redirection' => true,
-                // Optional fields
-                // 'currency' => 'Default is TZS',
-                // 'items' => 'Number of items purchased, default is 1',
-                // 'payment_phone' => 'The number that will make the USSD transactions, if not specified it will use the phone value',
+                'name' => $data->client->name, 
+                'email' => $data->client->email,
+                'phone' => $data->client->phon_no,
+                'amount' => $data->price,
+                'transaction_id' => $data->client->id,
+                'no_redirection' => false,
             ];
 
-            return Selcom::checkout($payment_data);
+            // return Selcom::checkout($payment_data);
         }
 
 
+           
+        public function sendEmail(Request $request)
+        {
+            
+
+        MsGraph::emails()
+            ->to(['breezojr#gmail.com'])
+            ->subject('the subject')
+            ->body(json_decode('content-type'))
+            ->send();
+        }
 
 
 

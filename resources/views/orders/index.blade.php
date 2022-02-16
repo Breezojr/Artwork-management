@@ -52,16 +52,13 @@
                           @else
                           <td class="text-right"> {{$data->status}} </td>
                       @endif
-                    
-
-
-                      
                     </tr>
                    @endif
                    @endforeach
                   @endforeach
                 </tbody>
               </table>
+            
              
   </div>
  </div>

@@ -40,28 +40,29 @@
              </tr>
            </thead>
            <tbody>
-           @foreach ($data as $data)
+           @foreach ($data as $data1)
              <tr>
-               <td>{{$data->title}}</td>
-               <td>{{$data->price}}</td>
+               <td>{{$data1->title}}</td>
+               <td>{{$data1->price}}</td>
 
                   @if($data)
-                    @if($data->status == true)
+                    @if($data1->status == true)
                     <td> Completed </td>
-                    @elseif($data->status == false)
+                    @elseif($data1->status == false)
                     <td> Pending </td>
                     @else 
                     <td> System Error </td>
                     @endif 
                     @else
-                    {{$data->status}}
+                    {{$data1->status}}
                   @endif
 
-                <td> @foreach ($data->users as $data) {{$data->name}} <br>  @endforeach </td>
+                <td> @foreach ($data1->users as $data1) {{$data1->name}} <br>  @endforeach </td>
              </tr>
              @endforeach
            </tbody>
            </table>
+           
           </div>
          
         </div>
@@ -84,13 +85,40 @@
             </div>
           </div>
           <div class="card-body">
-            
+          <table>
+           <thead>
+             <tr>
+               <th>Title</th>
+               <th>price</th>
+               <th>status</th>
+               <th>Designer(s)</th>
+             </tr>
+           </thead>
+           <tbody>
+           @foreach ($data as $data1)
+             <tr>
+               <td>{{$data1->title}}</td>
+               <td>{{$data1->price}}</td>
+
+                  @if($data)
+                    @if($data1->status == true)
+                    <td> Completed </td>
+                    @elseif($data1->status == false)
+                    <td> Pending </td>
+                    @else 
+                    <td> System Error </td>
+                    @endif 
+                    @else
+                    {{$data1->status}}
+                  @endif
+
+                <td> @foreach ($data1->users as $data1) {{$data1->name}} <br>  @endforeach </td>
+             </tr>
+             @endforeach
+           </tbody>
+           </table>
           </div>
-          <div class="card-footer">
-            <div class="stats">
-              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
-            </div>
-          </div>
+       
         </div>
       </div>
       <div class="col-lg-4 col-md-4">
@@ -111,13 +139,44 @@
             </div>
           </div>
           <div class="card-body">
-          
+          <table>
+           <thead>
+             <tr>
+               <th>Title</th>
+               <th>price</th>
+               <th>status</th>
+               <th>Designer(s)</th>
+             </tr>
+           </thead>
+           <tbody>
+           @foreach ($data as $data1)
+             <tr>
+               <td>{{$data1->title}}</td>
+               <td>{{$data1->price}}</td>
+
+                  @if($data)
+                    @if($data1->status == true)
+                    <td> Completed </td>
+                    @elseif($data1->status == false)
+                    <td> Pending </td>
+                    @else 
+                    <td> System Error </td>
+                    @endif 
+                    @else
+                    {{$data1->status}}
+                  @endif
+
+                <td> @foreach ($data1->users as $data1) {{$data1->name}} <br>  @endforeach </td>
+             </tr>
+             @endforeach
+           </tbody>
+           </table>
           </div>
-          <div class="card-footer">
+          <!-- <div class="card-footer">
             <div class="stats">
               <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
    
