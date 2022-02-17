@@ -1,72 +1,57 @@
-@extends('layouts.app3', [
-    'namePage' => 'User Management',
+@extends('layouts.app1', [
+    'namePage' => 'Artwork Order',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'art',
     'backgroundImage' => asset('now') . "/img/bg14.jpg",
 ])
 @section('content')
+		 <div class=" small ">
+			</div>
 
-<div class="small smaller">
-  </div>
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit New User</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
-        </div>
-    </div>
-</div>
+       <div class="art-post">
+	       <form action="{{ route('posts.update', $post->id ) }}" method="POST" enctype="multipart/form-data">
+            @csrf 
+            @method('GET')
+			<div class="row2">
+		    	@if (count($errors) > 0)
+				<div class="alert alert-danger">
+					<strong>Whoops!</strong> There were some problems with your input.<br><br>
+					<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+					</ul>
+				  </div>
+				@endif
+				<div class="sel">
+				  <label> Order Title:</label>
+					<h4 style="display:inline-block"> {{$post->order->title}} </h4>
+				</div>
+               
+		    	<div class="user-image img-cont-outer  ">
+					    <div class="imgPreview img-cont-inner"> <img src="{{ ($post->image)[0] }}" alt=""> </div>
+			    	</div>            
+			    	<div class="custom-file">
+				    	<input type="file" name="image[]" class="custom-file-input" id="images" multiple="multiple">
+					    <label class="custom-file-label" for="images">Choose image</label>
+			        </div>
 
-@if (count($errors) > 0)
-  <div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-       @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-       @endforeach
-    </ul>
-  </div>
-@endif
 
-{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Email:</strong>
-            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Password:</strong>
-            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Confirm Password:</strong>
-            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Role:</strong>
-            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</div>
-{!! Form::close() !!}
+				<div class="note">
+			     	<label class="descr" >Notes:</label>
+					<textarea name="note"  placeholder="Best Describe the work in a very clear way">{{ $post->note }}</textarea>
+		
+				</div>
+					 
+        
+			     <div class="text-center text-blw">
+			        	<button type="submit" class="btn btn-primary">Upload Artwork</button>
+		    	 </div>
+          </form>
+	   </div>
 
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
 @endsection
+
+
+
+

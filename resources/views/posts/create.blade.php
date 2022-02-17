@@ -12,16 +12,16 @@
 	       <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf 
 			<div class="row2">
-			@if (count($errors) > 0)
-  <div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-       @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-       @endforeach
-    </ul>
-  </div>
-@endif
+		    	@if (count($errors) > 0)
+				<div class="alert alert-danger">
+					<strong>Whoops!</strong> There were some problems with your input.<br><br>
+					<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+					</ul>
+				  </div>
+				@endif
 				<div class="sel">
 				  <label>Select Order:</label>
 					<select name="order_id" id="order_id">
@@ -47,7 +47,7 @@
 					<textarea name="note"  placeholder="Best Describe the work in a very clear way"></textarea>
 		
 				</div>
-					
+					 
         
 			     <div class="text-center text-blw">
 			        	<button type="submit" class="btn btn-primary">Upload Artwork</button>
@@ -56,3 +56,7 @@
 	   </div>
 
 @endsection
+
+
+
+

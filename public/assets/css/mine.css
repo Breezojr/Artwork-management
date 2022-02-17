@@ -411,18 +411,12 @@ background-color: #1D3C60;
 .art-post  .descr{
    margin-top: 20px;
 }
-.art-post .img-cont-outer{
-   width: 70%;
-   height: 250px;
-   border: 1px solid rgb(151, 137, 137);
-   left: 10%;
-   position: relative;
-}
+
 
 .art-post .custom-file {
    display: block;
    left: 10%;
-   width: 70%;
+   width: 30%;
    position: relative;
    margin: 5px;
 }
@@ -442,23 +436,26 @@ background-color: #1D3C60;
   margin-left: -10vw;
 } 
 
-.create .img-cont-outer{
-   min-height: 250px;
-    border: 2px solid black;
-    background-color:#FFFFFF ;
-    width: 100%;
- 
-   
-  }
- 
+.art-post .img-cont-outer{
+   width: 30%;
+   height: 300px;
+   border: 1px solid rgb(151, 137, 137);
+   left: 10%;
+   position: relative;
+}
+
+
+
   .art-post .img-cont-inner{
   width: 100%;
   display: inline-block;
+
+  height: 280px;
  }
  
  .art-post .img-cont-inner img{
-    
-    width: 20%;
+    width: 100%;
+    height: 280px;
   }
 
 
@@ -470,4 +467,28 @@ background-color: #1D3C60;
      left:10%;
      position: relative;
      width: 80%;
+  }
+  
+
+  .art-content table thead th{
+  text-align: left;
+}
+
+
+
+.art-content table tbody td {
+   font-size: 15px;
+   text-align: left;
+ }
+ 
+
+  .art-content .art-img-cont .art-image{
+   width: 90%;
+   left: 5%;
+   position: relative;
+ 
+}
+
+  .art-content .art-image{
+     width: 100%;
   }

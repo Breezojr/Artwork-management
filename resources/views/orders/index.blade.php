@@ -32,8 +32,8 @@
                 </thead>
                 <tbody>
                   @foreach($data as $value)
-                   @foreach($data4 as $value2)
-                    @if( $cid == $value2->id)
+               
+                   
                     <tr>
                      <td> {{ ++$i}} </td>
                       <td> {{ $value->title}} </td>
@@ -80,8 +80,8 @@
                         
                         </td>
                     </tr>
-                   @endif
-                   @endforeach
+                   
+                
                   @endforeach
                 </tbody>
               </table>

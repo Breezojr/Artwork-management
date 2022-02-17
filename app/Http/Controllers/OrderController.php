@@ -81,7 +81,7 @@ class OrderController extends Controller
         return view('orders.edit', ['designers'=>$designers,'order' => $order ]);
     }
 
-    public function update($id) 
+    public function update(Request $request, $id) 
     {
         $request->validate([
             'note' => 'required',
@@ -92,14 +92,14 @@ class OrderController extends Controller
             'price' => 'required',
             'description' => 'required',
         ]);
-        $phones = Phone::find($id);
+       
         $client = Client::find($id);
         $client->email = $request->email;
         $client->phon_no = $request->phon_no;
         $client->name = $request->name;
         $client->address = $request->address;
         $client->save();
-        $artwork = new Order;
+        $artwork = Order::find($id);
         $artwork->title = $request->title;
         $artwork->note = $request->note;
         $artwork->client_id = $client->id;
@@ -117,7 +117,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         Order::find($id)->delete();
-        return redirect()->route('users.index')
+        return redirect()->route('orders.index')
                         ->with('success','User deleted successfully');
     }
 

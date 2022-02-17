@@ -8,7 +8,7 @@
 
 <div class="small smaller">
   </div>
-  <div class="content">
+  <div class="content art-content">
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -27,18 +27,23 @@
                 <tr>
                 <th>No</th>
                 <th>Artwotk Title</th>
+                <th>Photo</th>
                 <th>Designer Name</th>
                 <th>Notes</th>
-                <th>Photo(s)</th>
+                <th>Status</th>
+                
                 </tr>
-              </thead>
+              </thead> 
               <tfoot>
               <tr>
-                <th>No</th>
-                <th>Artwotk Title</th>
+                <th >No</th>
+                <th width="15%">Artwotk Title</th>
+                <th width="12%">Photo</th> 
                 <th>Designer Name</th>
                 <th>Notes</th>
-                <th>Photo(s)</th> 
+                <th>Status</th>
+                <th></th>
+                
                 </tr>
               </tfoot>
               <tbody>
@@ -46,9 +51,31 @@
           <tr>
           <td>{{ ++$i }}</td>
           <td>{{ $post->order->title }}</td>
+          <td> <div class="art-img-cont"><img class="art-image" src="{{ ($post->image)[0] }}"  alt="" /> </div></td>
           <td>{{ $post->user->name }}</td>
           <td>{{ $post->note }}</td>
-          <td><img src="{{ ($post->image)[0] }}" height="75" width="75" alt="" />
+          <td>Completed</td>
+          <td class="btn-cont text-right">
+                      <div class="dropdown">
+                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                          <a class="dropdown-item" style=" cursor:pointer;"  href="{{ route('posts.edit', $post->id) }}" >Edit</a>
+
+                          <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
+                          @csrf
+                          @method('DELETE')  
+                          <button type="submit" class="dropdown-item">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+
+
+
+                        
+                        </td>
          
         </tr>
       @endforeach

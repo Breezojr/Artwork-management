@@ -21,6 +21,7 @@
        <div class="create">
 	      <form action="{{ route('orders.update', $order->id) }}" method="POST" enctype="multipart/form-data">
             @csrf 
+			@method('PUT')
 			<div class="row">
             
                 <div class="form-group">
