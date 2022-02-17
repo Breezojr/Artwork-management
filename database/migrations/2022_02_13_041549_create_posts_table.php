@@ -15,9 +15,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('order_id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->onUpdate('cascade');
+            $table->foreignId('order_id')->onUpdate('cascade');
+            $table->foreignId('client_id')->onUpdate('cascade');
             $table->string('note');
+            $table->boolean('status')->default(false);
             $table->json('image')->nullable();
             $table->timestamps();
         });

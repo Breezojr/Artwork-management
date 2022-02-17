@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('note');
             $table->string('title');
-            $table->foreignId('client_id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('client_id');
             $table->decimal('price', 10, 2);
             $table->text('description');
             $table->boolean('status')->default(false);

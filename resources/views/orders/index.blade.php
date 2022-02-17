@@ -8,7 +8,7 @@
 
 <div class="small smaller">
   </div>
-
+  @if (count($data) >= 1)
        <div class="tbl-cont-outer">
          <div class="tabl-cont">
           <div class="table-responsive resp">
@@ -88,6 +88,11 @@
               {!! $data->links() !!}
   </div>
  </div>
-        </div>   
+        </div>  
+        @else
+                     <div class="cont-empty">
+                      <p> There is no data</p> 
+                     </div>
+                  @endif 
   @endsection
    

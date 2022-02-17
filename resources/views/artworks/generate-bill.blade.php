@@ -1,7 +1,7 @@
 @extends('layouts.app3', [
     'namePage' => 'INVOICE',
     'class' => 'login-page sidebar-mini ',
-    'activePage' => 'invoice',
+    'activePage' => '',
     'backgroundImage' => asset('now') . "/img/bg14.jpg",
 ])
 @section('content')
@@ -46,7 +46,7 @@
               </div>
               <div class="isue-date">
                  <h4>Isue date</h4>
-                 <p>{{ $data->created_date }}</p>
+                 <p>{{ $date }}</p>
               </div>
             </div>
          </div>
@@ -71,9 +71,9 @@
             </thead>
             <tbody>
               <tr>
-                <td width="40%">{{$data ->order->title}}</td>
-                <td>{{$data->order ->price}}</td>
-                <td>{{$data->quantity}}</td>
+                <td width="40%">{{$data ->name}}</td>
+                <td>{{$data ->price}}</td>
+                <td>{{$quantity}}</td>
                 <td>{{$total}} </td>
               </tr>
               

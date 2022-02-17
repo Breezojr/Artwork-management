@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\Order;
+use App\Models\Post;
 use App\Models\User;
 use Bryceandy\Selcom\Facades\Selcom;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -13,23 +14,32 @@ use DB;
 
 class InvoiceController extends Controller
 {
-
-
-
     public function index(Request $request){
-        $data = Order::with('client')->where('status',true)->get();
+        $data = Invoice::with('order','client','post')->latest()->paginate(10);
         return view('invoice.index',compact('data'))
-        ->with('i', ($request->input('page', 1) - 1) * 5);
+        ->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
 
 
+
     public function create(){
-        $cid = auth()->user()->id;
-         $orders = Order::where('user_id', $cid)->get();
-         return view("posts.create", ['orders'=>$orders]);
+
      }
  
+
+     public function show($id){
+        $data = Invoice::with('order','user')->find($id);
+        $date = Carbon::now();
+        $quantity = 1;
+        $total =  $data->order->price;
+        return view("invoice.show",compact('data', 'date', 'quantity', 'total', ));
+
+    }
+
+
+
+
 
 
      public function store(Request $request){
@@ -78,29 +88,11 @@ class InvoiceController extends Controller
 
 
 
-    public function completed(Request $request){
-        $data = Order::with('client')->where('status',true)->get();
-        return view('invoice.completed',compact('data'))
-        ->with('i', ($request->input('page', 1) - 1) * 5);
-    }
+ 
 
+ 
 
-
-    public function show($id){
-        $data = Order::with('client')->find($id);
-        $date = Carbon::now();
-        $quantity = 1;
-        $total = $quantity * $data->price;
-        return view("invoice.show",compact('data', 'date', 'quantity', 'total', ));
-
-    }
-
-    public function bill($id){
-        $data = Order::with('user')->find($id);
-        return view("invoice.index",compact('data'));
-
-    }
-
+  
 
 
 

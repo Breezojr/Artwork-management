@@ -9,10 +9,10 @@ use App\Models\User;
 class PostController extends Controller
 {
     public function index(){
-        $data = Post::with('user','order')->get();
+        $data = Post::with('user','order')->has('order')->get();
         return view("posts.index",['data' => $data])
                 ->with('i', (request()->input('page', 1) - 1) * 5);
-        ;
+        
     }
 
 
@@ -44,8 +44,15 @@ class PostController extends Controller
                 $imgData[] = $tempName;
             }
         }
+
+        
+            $order = Order::with('client')->find($request->order_id);
+            $client_id1 = $order->client->id;
+      
+
         $input = $request->all();
         $input['image'] = $imgData;
+        $input['client_id'] = $client_id1;
         $input['user_id'] = auth()->user()->id;
         Post::create($input);
         $status = Order::find($request->order_id);

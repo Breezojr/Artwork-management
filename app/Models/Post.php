@@ -12,6 +12,7 @@ class Post extends Model
     protected $fillable = [
         'user_id',
         'order_id',
+        'client_id',
         'note',
         'image'
       ];
@@ -26,4 +27,8 @@ class Post extends Model
         {
             return $this->belongsTo(User::class);
         }
+        public function client()
+        {
+            return $this->belongsTo(Client::class);
+          }
 }

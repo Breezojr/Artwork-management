@@ -161,7 +161,7 @@ background-color: #1D3C60;
    margin-left: 4vw;
    border-radius: 0.1875rem;
    overflow: hidden;
-   padding-bottom: 70px;
+   padding-bottom: 120px;
    border: 0;
 } 
 
@@ -492,3 +492,46 @@ background-color: #1D3C60;
   .art-content .art-image{
      width: 100%;
   }
+
+
+  .tabl-cont .resp table tbody td .bil{
+     font-size: 10px;
+     padding-left: 2px;
+     width: 100%;
+     padding-right: 2px;
+   
+     
+  }
+  .tabl-cont .resp table tbody td .btm{
+
+   margin-bottom: 6px;
+   
+}
+
+
+  .tabl-cont .resp table tbody .billa{
+  padding-top: 0px;
+   
+}
+
+
+.art-img-cont1{
+   width: 30%;
+}
+   .resp1 .resp {
+   padding-bottom: 100px;
+   }
+
+
+   .cont-empty{
+      width: 100%;
+      height: 900px;
+   }
+
+   .cont-empty p{
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    top:40%;
+   
+   }

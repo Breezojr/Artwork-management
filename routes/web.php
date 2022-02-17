@@ -32,8 +32,8 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::get('generate-pdf', [InvoiceController::class, 'generatePDF'])->name('pdf');
 	Route::get('/request-payment/{id}', [InvoiceController::class, 'requestPayment'])->name('request-payment');
 	Route::post('send-email', [InvoiceController::class, 'sendEmail'])->name('send-email');
-	Route::get('completed', [InvoiceController::class, 'completed'])->name('completed');
-	Route::get('/bill/{id}', [InvoiceController::class, 'bill'])->name('bill');
+	Route::get('completed', [ArtworkController::class, 'completed'])->name('completed');
+	Route::get('/generate-bill/{id}', [Artworkcontroller::class, 'generateBill'])->name('generate-bill');
 	Route::get('send-email', [InvoiceController::class, 'sendEmail'])->name('send-email');
 
 });

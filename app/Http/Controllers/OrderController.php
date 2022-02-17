@@ -22,7 +22,6 @@ class OrderController extends Controller
 
         $cid = auth()->user()->id;
         $data = Order::with('client')->latest()->paginate(15);
-
         return view('orders.index',compact('data','cid', 'data4'))
         ->with('i', ($request->input('page', 1) - 1) * 15);
     }
@@ -46,11 +45,11 @@ class OrderController extends Controller
     {
         $request->validate([
             'note' => 'required',
-            'email' => 'required',
-            'phon_no' => 'required',
+            'email' => 'required|email|unique:clients,email',
+            'phon_no' =>  'required|digits:10',
             'name' => 'required',
             'title' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric|gt:0',
             'description' => 'required',
            
         ]);

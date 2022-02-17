@@ -23,4 +23,8 @@ class Client extends Model
        {
           return $this->hasMany(Order::class);
         }
+        public function posts()
+        {
+           return $this->hasMany(Post::class);
+         }
 }

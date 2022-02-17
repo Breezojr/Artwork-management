@@ -8,7 +8,6 @@
 
 <div class="small smaller">
   </div>
-  @if (count($data) >= 1)
   <div class="content art-content">
     <div class="row">
       <div class="col-md-12">
@@ -49,7 +48,7 @@
               </tfoot>
               <tbody>
               @foreach ($data as $key => $post)
-             <tr>
+          <tr>
           <td>{{ ++$i }}</td>
           <td>{{ $post->order->title }}</td>
           <td> <div class="art-img-cont"><img class="art-image" src="{{ ($post->image)[0] }}"  alt="" /> </div></td>
@@ -72,17 +71,16 @@
                           </form>
                         </div>
                       </div>
+
+
+
+                        
                         </td>
-                     </tr>
-            
-              @endforeach
-                </tbody>
+         
+        </tr>
+      @endforeach
+                              </tbody>
             </table>
-            @else
-                     <div class="cont-empty">
-                      <p> There is no data</p> 
-                     </div>
-                  @endif
           
   @endsection
    

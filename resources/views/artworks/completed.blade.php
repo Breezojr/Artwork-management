@@ -8,12 +8,16 @@
 
 <div class="small smaller">
   </div>
+  @if (count($data) >= 1)
  <div class="tabl-cont">
       <div class="table-responsive resp">
             <table class="table">
                 <thead class=" text-primary">
                   <th>
-                   Order Title
+                   Artwork Title
+                  </th>
+                  <th>
+                  Photo
                   </th>
                   <th>
                    Client Name
@@ -36,9 +40,7 @@
                   <th>
                   Note
                   </th>
-                  <th>
-                  Photos
-                  </th>
+                 
                   <!-- <th class="text-right">
                     Status
                   </th> -->
@@ -47,11 +49,14 @@
                   </th>
                 </thead>
                 <tbody>
+
+               
                   @foreach($data as $value)
                   <tr>
                     <td>
-                      {{ $value->title}}
+                      {{ $value->order->title}}
                     </td>
+                    <td><img src="{{ ($value->image)[0] }}" height="75" width="75" alt="" /> </td>
                     <td>
                       {{ $value->client->name}}
                     </td>
@@ -62,38 +67,44 @@
                       {{ $value->client->email}}
                     </td>
                     <td>
-                      {{ $value->price}}
+                      {{ $value->order->price}}
                     </td>
                     <td>
-                      @foreach($value->users as $value1)
-                       {{ $value1->name}}
-                      @endforeach
+                      {{ $value->user->name}}
                     </td>
+                  
                     <td>
-                      {{ $value->description}}
+                      {{ $value->order->description}}
                     </td>
                     <td>
                       {{ $value->note}}
                     </td>
-                    <td><img src="{{ ($value->image)[0] }}" height="75" width="75" alt="" />
-                     
+                    <td>
+                      {{ $value->status}}
                     </td>
                     <!-- <td class="text-right">
                     {{ $value->status}}
                     </td> -->
-                    <td >
-                      <a class="btn btn-primary" href="{{ route('invoice.show', $value->id ) }}">Generate Bill in TZS</a> 
-                      <a class="btn btn-primary" href="#">Generate Bill in USD</a> 
+                    <td class="billa">
+                      <a class="btn btn-primary bil btm" href="{{ route('generate-bill', $value->id ) }}">Generate Bill in TZS</a> 
+                      <a class="btn btn-primary bil" href="{{ route('generate-bill', $value->id ) }}">Generate Bill in USD</a> 
                     </td>
                   </tr>
                   @endforeach
-                  
+
+                
+              
                    
                 </tbody>
               </table>
              
   </div>
  </div>
+ @else
+                     <div class="cont-empty">
+                      <p> There is no data</p> 
+                     </div>
+                  @endif
            
   @endsection
    

@@ -13,6 +13,7 @@ class Invoice extends Model
         'user_id',
         'artwork_id',
         'order_id',
+        'created_date'
       ];
       protected $casts = [
         'image' => 'json'
@@ -31,4 +32,8 @@ class Invoice extends Model
         {
             return $this->belongsTo(Order::class);
           }
+          public function post()
+          {
+              return $this->belongsTo(Post::class);
+            }
   }

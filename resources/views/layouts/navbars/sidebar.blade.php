@@ -29,7 +29,7 @@
         </a>
       </li>
       <li class = "@if ($activePage == 'art') active @endif">
-        <a href="{{ route('posts.index','artwork-workspace') }}">
+        <a href="{{ route('posts.index',) }}">
           <i class="now-ui-icons location_map-big"></i>
           <p>{{ __('Art Workspace') }}</p> 
         </a>
@@ -52,12 +52,7 @@
           <p>{{ __('Invoice') }}</p>
         </a>
       </li>
-      <li class = "@if ($activePage == 'typography') active @endif">
-        <a href="#">
-          <i class="now-ui-icons text_caps-small"></i>
-          <p>{{ __('Typography') }}</p>
-        </a>
-      </li>
+    
       <!-- <li class = "">
         <a href="{{ route('page.index','upgrade') }}" class="bg-info">
           <i class="now-ui-icons arrows-1_cloud-download-93"></i>
