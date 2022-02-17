@@ -15,11 +15,8 @@ class Order extends Model
         'description',
         'price',
         'status',
-        'image' ,
       ];
-      protected $casts = [
-        'image' => 'json'
-        ];
+    
       public $timestamps = true;
 
        public function users()

@@ -21,7 +21,6 @@ class CreateOrdersTable extends Migration
             $table->decimal('price', 10, 2);
             $table->text('description');
             $table->boolean('status')->default(false);
-            $table->json('image')->nullable();
             $table->timestamps();
         });
     }

@@ -32,8 +32,16 @@ class OrderController extends Controller
     {
         $designers = User::all();
         // $designers = User::role('Designer')->get();
-        return view('orders.orders', ['designers'=>$designers]);
+        return view('orders.create', ['designers'=>$designers]);
     }
+    public function show($id)
+    {
+        $data = Order::with('client')->find($id);
+        return view('orders.show',compact('data'));
+    }
+
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -44,21 +52,9 @@ class OrderController extends Controller
             'title' => 'required',
             'price' => 'required',
             'description' => 'required',
-            'image' => 'required|array',
-            'image.*' => 'mimes:jpg,png,jpeg,gif,svg|max:2048',
+           
         ]);
-        $imgData = [];
-        if(count($request->image)) {
-            foreach($request->image as $file) {
-                $path = '/images/orders';
-                $date = Carbon::now();
-                $filename = hash('MD5', time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
-                $tempName = env('APP_URL') . '/storage' . $path . '/'. $date->year.'/' . $filename;
-                $filePath = $path . "/$date->year";
-                $file->storeAs($filePath, $filename, 'public');
-                $imgData[] = $tempName;
-            }
-        }
+        
         $client = new Client;
         $client->email = $request->email;
         $client->phon_no = $request->phon_no;
@@ -71,11 +67,58 @@ class OrderController extends Controller
         $artwork->client_id = $client->id;
         $artwork->price = $request->price;
         $artwork->description = $request->description;
-        $artwork->image = $imgData;
         $artwork->save();
         $user = User::find([1, 2]);
         $artwork->users()->attach($user);
         return redirect()->route('home')
                     ->with('success','Order created successfully');
     }
+
+    public function edit(Order $order)
+    {
+        $designers = User::all();
+        // $designers = User::role('Designer')->get();
+        return view('orders.edit', ['designers'=>$designers,'order' => $order ]);
+    }
+
+    public function update($id) 
+    {
+        $request->validate([
+            'note' => 'required',
+            'email' => 'required',
+            'phon_no' => 'required',
+            'name' => 'required',
+            'title' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+        ]);
+        $phones = Phone::find($id);
+        $client = Client::find($id);
+        $client->email = $request->email;
+        $client->phon_no = $request->phon_no;
+        $client->name = $request->name;
+        $client->address = $request->address;
+        $client->save();
+        $artwork = new Order;
+        $artwork->title = $request->title;
+        $artwork->note = $request->note;
+        $artwork->client_id = $client->id;
+        $artwork->price = $request->price;
+        $artwork->description = $request->description;
+        $artwork->save();
+        $user = User::find([1, 2]);
+        $artwork->users()->attach($user);
+        return redirect()->route('home')
+                    ->with('success','Order created successfully');
+    }
+
+
+
+    public function destroy($id)
+    {
+        Order::find($id)->delete();
+        return redirect()->route('users.index')
+                        ->with('success','User deleted successfully');
+    }
+
 }
