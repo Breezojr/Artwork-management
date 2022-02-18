@@ -32,8 +32,6 @@
                 </thead>
                 <tbody>
                   @foreach($data as $value)
-               
-                   
                     <tr>
                      <td> {{ ++$i}} </td>
                       <td> {{ $value->title}} </td>

@@ -113,7 +113,13 @@ class PostController extends Controller
 
     public function destroy($id)
     {
-        Post::find($id)->delete();
+        
+        $order = Post::with('order')->find($id);
+        $order_id = $order->order_id;
+        $status = Order::find($order_id);
+        $status->status = false;
+        $status->save();   
+        Post::find($id)->delete();   
         return redirect()->route('posts.index')
                         ->with('success','User deleted successfully');
     }

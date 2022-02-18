@@ -8,7 +8,7 @@
 
 <div class="small smaller">
   </div>
-  @if (count($data) >= 1)
+ 
   <div class="content art-content">
     <div class="row">
       <div class="col-md-12">
@@ -19,6 +19,7 @@
             <div class="col-12 mt-2">
                                         </div>
           </div>
+          @if (count($data) >= 1)
           <div class="card-body">
             <div class="toolbar">
               <!--        Here you can write extra buttons/actions for the toolbar              -->

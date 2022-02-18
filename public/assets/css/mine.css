@@ -494,25 +494,30 @@ background-color: #1D3C60;
   }
 
 
-  .tabl-cont .resp table tbody td .bil{
-     font-size: 10px;
-     padding-left: 2px;
-     width: 100%;
-     padding-right: 2px;
-   
+table tbody .bills a{
+    display: block;
+    width: 100%;
+    color: white;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    background-color: rgb(235, 126, 126);
+    text-decoration: none;
+    border-radius: 10px;
      
   }
-  .tabl-cont .resp table tbody td .btm{
-
-   margin-bottom: 6px;
-   
-}
 
 
-  .tabl-cont .resp table tbody .billa{
-  padding-top: 0px;
-   
-}
+  table tbody .bills a:hover{
+   background-color: #F96332;
+   color: black;
+ }
+ 
+  table tbody .bills .top{
+  
+    margin-bottom: 10px;
+ }
+
+
 
 
 .art-img-cont1{

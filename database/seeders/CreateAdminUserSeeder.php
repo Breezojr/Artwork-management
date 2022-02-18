@@ -30,7 +30,7 @@ class CreateAdminUserSeeder extends Seeder
 
     
 
-        $role = Role::create(['name' => 'Admin', 'name' => 'Designer']);
+        $role = Role::create(['name' => 'Admin']);
 
      
 

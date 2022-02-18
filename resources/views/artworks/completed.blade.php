@@ -10,7 +10,7 @@
   </div>
   @if (count($data) >= 1)
  <div class="tabl-cont">
-      <div class="table-responsive resp">
+      <div class="table-responsive resp tblo">
             <table class="table">
                 <thead class=" text-primary">
                   <th>
@@ -34,18 +34,13 @@
                   <th>
                    Designer 
                   </th>
-                  <th>
-                  Description
-                  </th>
+                
                   <th>
                   Note
                   </th>
+
+                  <th style="width:10%">
                  
-                  <!-- <th class="text-right">
-                    Status
-                  </th> -->
-                  <th class="text-right">
-                   
                   </th>
                 </thead>
                 <tbody>
@@ -72,23 +67,16 @@
                     <td>
                       {{ $value->user->name}}
                     </td>
-                  
-                    <td>
-                      {{ $value->order->description}}
-                    </td>
+
                     <td>
                       {{ $value->note}}
                     </td>
-                    <td>
-                      {{ $value->status}}
+                  
+                    <td class="bills">
+                      <a class="top" href="{{route('generate-bill',$value->id)}}">Generate bill in Tzs</a>
+                      <a href="{{route('generate-bill',$value->id)}}">Generate bill in Usd</a>
                     </td>
-                    <!-- <td class="text-right">
-                    {{ $value->status}}
-                    </td> -->
-                    <td class="billa">
-                      <a class="btn btn-primary bil btm" href="{{ route('generate-bill', $value->id ) }}">Generate Bill in TZS</a> 
-                      <a class="btn btn-primary bil" href="{{ route('generate-bill', $value->id ) }}">Generate Bill in USD</a> 
-                    </td>
+                   
                   </tr>
                   @endforeach
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Client;
 use App\Models\User;
+use Auth;
 
 
 
@@ -14,15 +15,26 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        $data2 = Order::with('client')->get();
 
-         foreach( $data2 as $data3){
-             $data4 = $data3->users;
-           }
+        $user = Auth::user();
+        if($user->hasRole('Admin')){
+            $data = Order::with('client')->latest()->paginate(15);
+        }
 
-        $cid = auth()->user()->id;
-        $data = Order::with('client')->latest()->paginate(15);
-        return view('orders.index',compact('data','cid', 'data4'))
+        else{
+            $data1= Order::all();
+            foreach($data1 as $us_data){
+                if(count($us_data) > 1)
+                foreach($us_data->users as $user){
+                    $data = Order::with('client')->where( 'user->id',$user->id)->latest()->paginate(15);
+                }
+            }
+
+        }
+
+        
+        
+        return view('orders.index',compact('data'))
         ->with('i', ($request->input('page', 1) - 1) * 15);
     }
 
