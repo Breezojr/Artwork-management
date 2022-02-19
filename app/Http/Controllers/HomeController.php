@@ -23,10 +23,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Order::with('client')->get();
+        $data = Order::with('client')->latest()->take(5)->get();
+        $data2 = Order::with('client')->latest()->take(5)->get();
         $designers = User::role('Designer')->get();
-        return view('home', ['data' => $data, 'designers'=> $designers]);
+        return view('home', ['data' => $data, 'data2' => $data2, 'designers'=> $designers])->with('i', ($request->input('page', 1) - 1) * 5);;
     }
 }
