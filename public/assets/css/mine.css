@@ -163,6 +163,7 @@ width: 20%;
 
 
 
+
 .small{
 height: 70px;
 background-color: #1D3C60;
@@ -175,6 +176,10 @@ background-color: #1D3C60;
    
 
    
+
+
+
+
 
 
 
@@ -230,6 +235,11 @@ background-color: #1D3C60;
 
 
 
+
+
+
+
+
  .tabl-cont{
     width: 98%;
     background-color: rgb(253, 250, 243);
@@ -239,11 +249,7 @@ background-color: #1D3C60;
  }
 
 
-
-
-
-
-
+ 
  .tabl-cont .resp{
    max-width: 90%;
    background-color: rgb(253, 250, 243);
@@ -252,7 +258,33 @@ background-color: #1D3C60;
    overflow: hidden;
    padding-bottom: 120px;
    border: 0;
+   
 } 
+
+
+.tabl-cont .resp .btnadd{
+   display: block;
+   margin-bottom: 60px;
+
+} 
+
+.tabl-cont .resp .btnadd a{
+  right:6%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  position: relative;
+   
+} 
+
+.tabl-cont .resp .coontainer {
+  
+   margin-top: 20px;
+   width: 100%;
+
+ } 
+ 
+
+
 
 .tabl-cont .resp table thead th{
  font-size: 15px;
@@ -260,19 +292,16 @@ background-color: #1D3C60;
  width: 10%;
 } 
 
-.tabl-cont .resp table {
- min-height: 80px;
-  } 
 
+.tabl-cont .resp table tbody tr{
+ border-bottom: rgb(201, 178, 178) 1px solid;
+  } 
 
 .tabl-cont .resp table tbody td{
    font-size: 13px;
    font-weight: 500;
   } 
   
-
-
-
 
 .tabl-cont .resp tbody  .btn-cont{
    width: 15%;
@@ -288,6 +317,72 @@ background-color: #1D3C60;
    background-color:#E7E8ED ;
    color: black;
 } 
+
+
+
+ @media screen and (max-width:1410px){
+ .tabl-cont{
+   width: 100%;
+   margin-left: 0;
+}
+
+.tabl-cont .resp {
+   max-width: 100%;
+   margin-left: 0;
+
+  }
+
+.tabl-cont .resp .coontainer {
+   margin-left: 1.6vw;
+   overflow-x: scroll;
+
+  }
+      
+
+.tabl-cont .resp .coontainer table{
+   width: 1000px;
+}
+    
+
+
+
+.tabl-cont .resp table thead th{
+font-size: 12px;
+font-weight: 500;
+width: 10%;
+} 
+
+
+
+.tabl-cont .resp table tbody td{
+  font-size: 10px;
+  font-weight: 500;
+ }  
+}
+ 
+
+
+
+
+
+     
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
