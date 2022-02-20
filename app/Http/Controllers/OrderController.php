@@ -17,20 +17,20 @@ class OrderController extends Controller
     {
 
         $user = Auth::user();
-        if($user->hasRole('Admin')){
+        // if($user->hasRole('Admin')){
             $data = Order::with('client')->latest()->paginate(15);
-        }
+        // }
 
-        else{
-            $data1= Order::all();
-            foreach($data1 as $us_data){
-                if(count($us_data) > 1)
-                foreach($us_data->users as $user){
-                    $data = Order::with('client')->where( 'user->id',$user->id)->latest()->paginate(15);
-                }
-            }
+        // else{
+        //     $data1= Order::all();
+        //     foreach($data1 as $us_data){
+        //         if(count($us_data) > 1)
+        //         foreach($us_data->users as $user){
+        //             $data = Order::with('client')->where( 'user->id',$user->id)->latest()->paginate(15);
+        //         }
+        //     }
 
-        }
+        // }
 
         
         
@@ -41,8 +41,8 @@ class OrderController extends Controller
 
     public function create()
     {
-        $designers = User::all();
-        // $designers = User::role('Designer')->get();
+      
+        $designers = User::role('Designer')->get();
         return view('orders.create', ['designers'=>$designers]);
     }
     public function show($id)
@@ -79,8 +79,7 @@ class OrderController extends Controller
         $artwork->price = $request->price;
         $artwork->description = $request->description;
         $artwork->save();
-        $user = User::find([1, 2]);
-        $artwork->users()->attach($user);
+        $artwork->users()->attach($request->users);
         return redirect()->route('home')
                     ->with('success','Order created successfully');
     }

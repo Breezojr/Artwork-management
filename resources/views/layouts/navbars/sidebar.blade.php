@@ -12,15 +12,14 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
-    
+      @can('user-list')
       <li class="@if ($activePage == 'user') active @endif">
               <a href="{{ route('users.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
                 <p> {{ __("User Management") }} </p>
               </a>
             </li>
-
-   
+      @endcan
 
       <li class = "@if ($activePage == 'order') active @endif">
         <a href="{{ route('orders.index') }}">
@@ -34,8 +33,8 @@
           <p>{{ __('Art Workspace') }}</p> 
         </a>
       </li>
-   
-
+    
+      @can('completed')
       <li class = " @if ($activePage == 'completed') active @endif">
         <a href="{{ route('completed') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>
@@ -43,7 +42,7 @@
         </a>
       </li>
 
-
+      @endcan
 
 
       <li class = " @if ($activePage == 'invoice') active @endif">

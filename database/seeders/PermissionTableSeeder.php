@@ -31,7 +31,11 @@ class PermissionTableSeeder extends Seeder
  
             'product-edit',
  
-            'product-delete'
+            'product-delete',
+             
+            'completed',
+            
+            'user-list'
  
          ];
  

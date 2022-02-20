@@ -15,19 +15,15 @@ use DB;
 class InvoiceController extends Controller
 {
     public function index(Request $request){
-        $data = Invoice::with('order','client','post')->latest()->paginate(10);
+        $data = Invoice::with('order','client','post')->latest()->has('order')->paginate(10);
         return view('invoice.index',compact('data'))
         ->with('i', ($request->input('page', 1) - 1) * 10);
     }
 
 
-
-
     public function create(){
 
      }
- 
-
      public function show($id){
         $data = Invoice::with('order','user')->find($id);
         $date = Carbon::now();

@@ -27,6 +27,13 @@ class UserController extends Controller
     use RegistersUsers;
 
 
+    function __construct()
+    {
+         $this->middleware('permission:user-list');
+     
+    }
+
+
     public function index1(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);

@@ -8,13 +8,14 @@
 
 <div class="small smaller">
   </div>
-  @if (count($data) >= 1)
+
        <div class="tbl-cont-outer">
          <div class="tabl-cont">
           <div class="resp">
             <div class="btnadd">
             <a class="btn btn-primary btn-round text-white pull-right" href="{{ route('orders.create') }}">Add New Order</a>
             </div>
+            @if (count($data) >= 1) 
             <div class="coontainer">
             <table >
                 <thead class=" text-primary">
@@ -34,6 +35,7 @@
                 </thead>
                 <tbody>
                   @foreach($data as $value)
+                  
                     <tr>
                      <td> {{ ++$i}} </td>
                       <td> {{ $value->title}} </td>

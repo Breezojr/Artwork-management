@@ -14,6 +14,7 @@
    background-color: white;
    width: 48%;
    margin-right: 0.6vw;
+   padding-bottom: 20px;
 }
 
 .big-content .grid .grid-item h4{
@@ -44,9 +45,19 @@
    border-top: 1px solid black;
   }
 
-  .big-content .grid .grid-item .body table .text-right{
-width: 20%;
+ .big-content .grid .grid-item .body table thead{
+  background-color: rgb(224, 238, 238);
+  height: 50px;
   }
+
+
+  .big-content .grid .grid-item .body table .text-right{
+    width: 20%;
+  }
+
+  .big-content .grid .grid-item .body table tbody tr{
+  border-bottom: rgb(224, 224, 203) 1px solid;
+     }
 
   .big-content .designer-tab{
    margin-top: 2vw;
@@ -55,7 +66,7 @@ width: 20%;
 
 
 .big-content .designer-tab .nav-tabs{
-   min-height: 200px;
+   min-height: 500px;
 }
 .big-content .designer-tab .nav-tabs li{
    display: inline-block;
@@ -222,6 +233,32 @@ background-color: #1D3C60;
     
     display: inline;
  }
+
+
+ .create  .checkin {
+   margin-top: -30px;
+ }
+
+
+ .create .form-group .check-cont {
+  margin-bottom: -15px;
+  width: 40%;
+  padding-right: 200px;
+}
+
+
+.create .form-group .check-cont input{
+   width: 5%;
+   padding-right: 200px;
+   margin-left: 200px;
+
+ }
+ 
+
+
+ 
+
+
  
  .create .text-center {
    width: 100%;
@@ -230,8 +267,15 @@ background-color: #1D3C60;
  
  .tbl-cont-outer {
    min-height: 900px;
-
 } 
+
+
+
+
+
+
+
+
 
 
 
@@ -718,6 +762,19 @@ table tbody .bills a{
    }
 
    .cont-empty p{
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    top:40%;
+   
+   }
+
+   .cont-empty1{
+     
+      
+   }
+
+   .cont-empty1 p{
     text-align: center;
     font-size: 30px;
     position: relative;

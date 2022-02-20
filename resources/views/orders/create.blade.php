@@ -53,12 +53,41 @@
 					<label class="descr" >Description:</label>
 					<textarea name="description"   class="form-control" placeholder="Best Describe the work in a very clear way">{{old('description')}}</textarea>
 				</div>
+
+
+
+
+				
+
+
+
+
 				<div class="form-group">
 					<label>Note:</label>
 					<input type="text" name="note" value="{{old('note')}}"  class="form-control" placeholder="Any Note for the work" required>
 				</div>
             
-             
+             <div class="form-group ">
+				<label class="check">Select Designer(s):</label>
+				<div class="checkin">
+
+
+				@foreach($designers as $value)
+                <label>{{ Form::checkbox('users[]', $value->id, false, array('class' => 'name')) }}
+                {{ $value->name }}</label>
+            <br/>
+            @endforeach
+
+
+
+				<!-- @foreach($designers as $value)
+                    <div class="check-cont">
+					<input type="Checkbox" name="designer[]" value="{{ $value->id }}">{{ $value->name}}
+					</div>   <br>
+                    @endforeach -->
+				</div>
+				 	
+				</div>
 			     <div class=" text-center">
 			        	<button type="submit" class="btn btn-primary">Place an Order</button>
 		    	 </div>

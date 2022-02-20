@@ -14,18 +14,8 @@
        <div class="grid-item">
      <div class="header">
        <h4 >Recently added Artworks Orders</h4>
-       <!-- <div class="dropdown">
-          <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
-              <i class="now-ui-icons loader_gear"></i>
-          </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item" href="{{ route('orders.create') }}">Create New Order</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <a class="dropdown-item text-danger" href="#">Remove Data</a>
-              </div>
-       </div> -->
      </div>
+     @if (count($data) >= 1)
      <div class="body">
        <table>
           <thead>
@@ -39,8 +29,8 @@
           </thead>
           <tbody>
             @foreach ($data as $data1)
+            @if($data1->status == false)
               <tr>
-         
                 <td>{{$data1->title}}</td>
                 <td>{{$data1->price}}</td>
 
@@ -58,11 +48,16 @@
 
                   <td class="text-right"> @foreach ($data1->users as $data1) {{$data1->name}} <br>  @endforeach </td>
               </tr>
+              @endif
               @endforeach
           </tbody>
       </table>
-
         </div>
+        @else
+          <div class="cont-empty1">
+          <p> There is no data</p> 
+          </div>
+        @endif
        </div>
       
 
@@ -71,11 +66,12 @@
        <div class="header">
           <h4 >Latest Completed Artworks Orders</h4>
       </div>
+      
+      @if (count($data) >= 1)
           <div class="body">
        <table>
           <thead>
               <tr>
-          
                 <th>Title</th>
                 <th>price</th>
                 <th>status</th>
@@ -84,11 +80,8 @@
           </thead>
           <tbody>
             @foreach ($data2 as $data1)
+            @if($data1->status == true)
               <tr>
-            
-
-
-
                 <td>{{$data1->title}}</td>
                 <td>{{$data1->price}}</td>
 
@@ -106,15 +99,22 @@
 
                   <td  class="text-right"> @foreach ($data1->users as $data1) {{$data1->name}} <br>  @endforeach </td>
               </tr>
+              @endif
               @endforeach
           </tbody>
       </table>
 
         </div>
+        @else
+                     <div class="cont-empty1">
+                      <p> There is no data</p> 
+                     </div>
+                 
+        @endif
        </div>
     </div>
 
-
+    @hasrole('Admin')
 
 
 
@@ -150,8 +150,10 @@
               @endforeach
                </div>
              </div>
+
             </div>
           </div>
+          @endhasrole
 
    
   </div>
