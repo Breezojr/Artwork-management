@@ -38,46 +38,24 @@ class InvoiceController extends Controller
 
 
 
-     public function store(Request $request){
-        request()->validate([
-            'order_id' => 'required',
-            'note' => 'required',
-            'image' => 'required',
-        ]);
-        $imgData = [];
-        if(count($request->image)) {
-            foreach($request->image as $file) {
-                $path = '/images/artworks';
-                $date = Carbon::now();
-                $filename = hash('MD5', time() . $file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension();
-                $tempName = env('APP_URL') . '/storage' . $path . '/'. $date->year.'/' . $filename;
-                $filePath = $path . "/$date->year";
-                $file->storeAs($filePath, $filename, 'public');
-                $imgData[] = $tempName;
-            }
-        }
-        $data = Invoice::all();
-        if($data){
-           $last3 = DB::table('invoices')->latest('id')->first();
-           $status = Invoice::find($last3);
-           $invoice_number1 = $status->invoice_number++;
-        }
-        else{
-            $invoice_number1 = 1;
-        }
 
-        $input = $request->all();
-        $input['image'] = $imgData;
-        $input['invoice_number'] = $invoice_number1;
-        $input['user_id'] = auth()->user()->id;
-        Invoice::create($input);
-        return redirect()->route('posts.index')
-                        ->with('success','Product created successfully.');
+
+
+    public function destroy($id)
+    {
+        $invoice_data = Invoice::find($id);
+        $order_id = $invoice_data->order_id;
+
+        $posts = Post::where('order_id', $order_id)->get();
+        foreach ($posts as $post){
+            $post->status = false;
+            $post->save();
+        }
+    
+        Invoice::find($id)->delete();
+        return redirect()->route('invoice.index')
+                        ->with('success','User deleted successfully');
     }
-
-
-
-
 
 
 

@@ -74,7 +74,7 @@
                   
                     <td class="bills">
                       <a class="top" href="{{route('generate-bill',$value->id)}}">Generate bill in Tzs</a>
-                      <a href="{{route('generate-bill',$value->id)}}">Generate bill in Usd</a>
+                      <a href="{{route('generate-billUSD',$value->id)}}">Generate bill in Usd</a>
                     </td>
                    
                   </tr>

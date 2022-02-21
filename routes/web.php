@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::post('send-email', [InvoiceController::class, 'sendEmail'])->name('send-email');
 	Route::get('completed', [ArtworkController::class, 'completed'])->name('completed');
 	Route::get('/generate-bill/{id}', [Artworkcontroller::class, 'generateBill'])->name('generate-bill');
+	Route::get('/generate-billUSD/{id}', [Artworkcontroller::class, 'generateBillUSD'])->name('generate-billUSD');
+
 	Route::get('send-email', [InvoiceController::class, 'sendEmail'])->name('send-email');
 
 });

@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "amrshawky/laravel-currency": "^5.0",
+        "ashallendesign/laravel-exchange-rates": "^4.1",
         "barryvdh/laravel-dompdf": "^1.0",
         "bryceandy/laravel-selcom": "^0.0.4",
         "dcblogdev/laravel-microsoft-graph": "^3.1",

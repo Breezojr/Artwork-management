@@ -45,7 +45,7 @@
                           </a>
                       
                           <a class="dropdown-item" style=" cursor:pointer;"  href="{{ route('invoice.edit', $value->id) }}" >Edit</a>
-                          <form action="{{ route('orders.destroy',$value->id) }}" method="POST">
+                          <form action="{{ route('invoice.destroy',$value->id) }}" method="POST">
                           @csrf
                           @method('DELETE')  
                           <button type="submit" class="dropdown-item">Delete</button>

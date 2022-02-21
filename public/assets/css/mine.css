@@ -83,6 +83,7 @@
    font-size: 15px;
    padding: 20px;
    margin-bottom: -2px;
+   text-decoration: none;
    border-top: 1px transparent #DEE2E6;
   border-left: 1px transparent #DEE2E6;
   border-right: 1px transparent #DEE2E6;
@@ -96,6 +97,7 @@
    font-size: 15px;
    padding: 20px;
    margin-bottom: -2px;
+   color: black;
    border-top: 1px solid #DEE2E6;
    border-left: 1px solid #DEE2E6;
    border-right: 1px solid #DEE2E6;
@@ -107,6 +109,7 @@
    margin-bottom: -5px;
    font-size: 15px;
    padding: 20px;
+   color: black;
    margin-bottom: -2px;
    border-top: 1px solid #DEE2E6;
    border-left: 1px solid #DEE2E6;

@@ -14,6 +14,7 @@ class Post extends Model
         'order_id',
         'client_id',
         'note',
+        'status',
         'image'
       ];
       protected $casts = [
