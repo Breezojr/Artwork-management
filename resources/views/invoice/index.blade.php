@@ -33,7 +33,7 @@
                       <td> {{ $value->client->name}} </td>
                       <td> {{ $value-> order->title}} </td>
                       <td><div class="art-img-cont1"><img class="art-image1" src="{{ ($value->post->image)[0] }}"  alt="" /> </div </td>
-                      <td>{{ $value->order->price}} </td>
+                      <td>{{ $value->total}} </td>
                       <td width="10px" class="text-right">
                       <div class="dropdown">
                         <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

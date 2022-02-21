@@ -24,19 +24,13 @@ class InvoiceController extends Controller
     public function create(){
 
      }
+
+
      public function show($id){
         $data = Invoice::with('order','user')->find($id);
-        $date = Carbon::now();
-        $quantity = 1;
-        $total =  $data->order->price;
-        return view("invoice.show",compact('data', 'date', 'quantity', 'total', ));
+        return view("invoice.show",compact('data' ));
 
     }
-
-
-
-
-
 
 
 
@@ -60,7 +54,7 @@ class InvoiceController extends Controller
 
 
 
-
+ 
 
  
 
@@ -70,10 +64,20 @@ class InvoiceController extends Controller
 
 
 
-    public function generatePDF()
+    public function generatePDF($id)
         {
+            $invoice_data = Invoice::with('order','user')->find($id);
+
             $data = [
-                'title' => 'Welcome to ItSolutionStuff.com',
+                'client_name' => $invoice_data->client->name,
+                'client_email' => $invoice_data->client->email,
+                'client_phone' => $invoice_data->client->phon_no,
+                'client_address' => $invoice_data->client->address,
+                'invoice_number' => $invoice_data->invoice_number,
+                'created_date' => $invoice_data->created_date,
+                'total' => $invoice_data->total,
+                'order_title' => $invoice_data->order->title,
+                'quantity' => $invoice_data->quantity,
                 'date' => date('m/d/Y')
             ];
             $pdf = PDF::loadView('invoice', $data);
@@ -97,6 +101,13 @@ class InvoiceController extends Controller
             // return Selcom::checkout($payment_data);
         }
 
+
+
+
+
+
+
+        
 
            
         public function sendEmail(Request $request)

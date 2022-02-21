@@ -71,11 +71,12 @@ class ArtworkController extends Controller
 
     public function generateBill(Request $request, $id){
         $data = Post::with('order','user','client')->find($id);
+      
         $data->status = true;
         $data->save();
         $date = Carbon::now();
         $quantity = 1;
-        $total = $quantity * $data->price;
+        $total = $quantity * $data->order->price;
         $invoice = new Invoice;
 
         $i_number =   Invoice::latest()->first();
@@ -89,23 +90,23 @@ class ArtworkController extends Controller
         $invoice->client_id = $data->client->id;
         $invoice->user_id = $data->user->id;
         $invoice->quantity = $data->quantity;
+        $invoice->total = $total;
         $invoice->post_id = $data->id;
         $invoice->invoice_number = $invoic_number;
         $invoice->save();
-        $status1 = Post::find($id);
-        $status1->update(['status'=> true ]);      
-
-        
-        return view('artworks.generate-bill',compact('data', 'date', 'quantity', 'total', ))
-        ->with('i', ($request->input('page', 1) - 1) * 5);
+        return  redirect()->route('invoice.index')
+        ->with('success','User deleted successfully');
     }
+
+
+
     public function generateBillUSD(Request $request, $id){
         $data = Post::with('order','user','client')->find($id);
         $data->status = true;
         $data->save();
         $date = Carbon::now();
         $quantity = 1;
-        $total = $quantity * $data->price ;
+        $total = $quantity * $data->order->price ;
         $invoice = new Invoice;
         $i_number =   Invoice::latest()->first();
         if($i_number){
@@ -122,12 +123,8 @@ class ArtworkController extends Controller
         $invoice->post_id = $data->id;
         $invoice->invoice_number = $invoic_number;
         $invoice->save();
-        $status1 = Post::find($id);
-        $status1->update(['status'=> true ]);      
-
-        
-        return view('artworks.generate-bill',compact('data', 'date', 'quantity', 'total', ))
-        ->with('i', ($request->input('page', 1) - 1) * 5);
+        return redirect()->route('invoice.index')
+        ->with('success','User deleted successfully');
     }
 
 

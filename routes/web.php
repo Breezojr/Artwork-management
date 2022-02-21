@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth']], function() {
 	Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 	Route::resource('invoice', InvoiceController::class);
-	Route::get('generate-pdf', [InvoiceController::class, 'generatePDF'])->name('pdf');
+	Route::get('/generate-pdf/{id}', [InvoiceController::class, 'generatePDF'])->name('pdf');
 	Route::get('/request-payment/{id}', [InvoiceController::class, 'requestPayment'])->name('request-payment');
 	Route::post('send-email', [InvoiceController::class, 'sendEmail'])->name('send-email');
 	Route::get('completed', [ArtworkController::class, 'completed'])->name('completed');

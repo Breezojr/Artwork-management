@@ -52,7 +52,7 @@
          </div>
          <div class="right">
             <h4>invoice Total</h4>
-            <p>Tzs. {{ $total }}</p>
+            <p>Tzs. {{ $data->total }}</p>
          </div>
       </div>
 
@@ -74,7 +74,7 @@
                 <td width="40%">{{$data ->name}}</td>
                 <td>{{$data ->price}}</td>
                 <td>{{$quantity}}</td>
-                <td>{{$total}} </td>
+                <td>{{$data->total}} </td>
               </tr>
               
             </tbody>
@@ -92,10 +92,10 @@
           <p>Amount Due</p>
        </div>
        <div class="right">
-          <p>Tzs. {{ $total }}</p>
+          <p>Tzs. {{ $data->total }}</p>
           <p>18%</p>
-          <p>Tzs. {{ $total }}</p>
-          <p>Tzs. {{ $total }}</p>
+          <p>Tzs. {{ $data->total }}</p>
+          <p>Tzs. {{ $data->total }}</p>
        </div>
      </div>
    </div>

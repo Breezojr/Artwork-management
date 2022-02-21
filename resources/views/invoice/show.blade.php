@@ -72,9 +72,9 @@
             <tbody>
               <tr>
                 <td width="40%">{{$data ->order->title}}</td>
-                <td>{{$data->order ->price}}</td>
+                <td>{{ $data->total }}</td>
                 <td>{{$data->quantity}}</td>
-                <td>{{$total}} </td>
+                <td>{{ $data->total }} </td>
               </tr>
               
             </tbody>
@@ -92,10 +92,10 @@
           <p>Amount Due</p>
        </div>
        <div class="right">
-          <p>Tzs. {{ $total }}</p>
+          <p>Tzs. {{ $data->total }}</p>
           <p>18%</p>
-          <p>Tzs. {{ $total }}</p>
-          <p>Tzs. {{ $total }}</p>
+          <p>Tzs. {{ $data->total }}</p>
+          <p>Tzs. {{ $data->total }}</p>
        </div>
      </div>
    </div>
@@ -109,7 +109,7 @@
 
     <div class="buttonss">
         <div class="pdf">
-          <a href="{{ route('pdf') }}" class="btn btn-primary"> Print </a>
+          <a href="{{ route('pdf', $data->id) }}" class="btn btn-primary"> Print </a>
         </div>
         <div class="email">
           <a href="{{ route('send-email') }}" class="btn btn-primary"> Send Email</a>
