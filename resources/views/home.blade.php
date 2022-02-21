@@ -116,43 +116,36 @@
 
     @hasrole('Admin')
 
+    <div class="tabs-container">
+    <div role="tabpanel">
+      <ul class="nav nav-tabs top-navs" role="tablist">
+          @foreach ($designers as $item)
+            <li role="presentation" >
+              <a href="#home{{ $item->id }}" aria-controls="home" role="tab" class="{{ $item->id == 3 ? 'active' : '' }}" data-toggle="tab">{{ $item->name }}</a>
+            </li>
+          @endforeach
+      </ul>
+      <div class="tab-content">
+       @foreach ($designers as $item)
+            <div role="tabpanel" class="tab-pane {{ $item->id == 3 ? 'active' : '' }}" id="home{{ $item->id }}" class="active">
+              <ul>
+                @foreach ($item->posts as $element)
+                <li > <img src="{{ ($element->image)[0] }}" height="75" width="75" alt="" /> </li>
 
+                    @foreach ($item->orders as $orderdata)
+                     <li> {{$orderdata->title}} </li>
+                    @endforeach
 
-    <div class=" designer-tab">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="card-title"> Designers</h4>
-          </div>
-          <div class="card-body">
-            <div role="tabpanel" >
-              <ul  class="nav nav-tabs" role="tablist">
-                <div class="nav-header-cont">
-                @foreach ($designers as $item)
-                    <li  id="{{$item->id}}" role="presentation" class="tab-header {{ $item->id == 1 ? 'active' : '' }}">
-                      <a href="#home{{ $item->id }}"   aria-controls="home" role="tab" data-toggle="tab">{{ $item->name }}</a>
-                    </li>
-                    
-                  @endforeach
-
-                </div>
-                
-                  
+                @endforeach
               </ul>
-              <div class="tab-content">
-              @foreach ($designers as $item)
-                    <div role="tabpanel" class="tab-pane  {{ $item->id == 1 ? 'active' : '' }} tab-body"  id="home{{ $item->id }}" class="active">
-                      <ul class="">
-                        @foreach ($item->posts as $element)
-                          <li > <img src="{{ ($element->image)[0] }}" height="75" width="75" alt="" /> </li>
-                        @endforeach
-                      </ul>
-                    </div>
-              @endforeach
-               </div>
-             </div>
-
             </div>
-          </div>
+       @endforeach
+      </div>
+    </div>
+    </div>
+
+
+
           @endhasrole
 
    

@@ -17,22 +17,20 @@ class OrderController extends Controller
     {
 
         $user = Auth::user();
-        // if($user->hasRole('Admin')){
-            $data = Order::with('client')->latest()->paginate(15);
-        // }
+    
+            if ($user->hasRole('Admin') or $user->hasRole('Accountant')){
 
-        // else{
-        //     $data1= Order::all();
-        //     foreach($data1 as $us_data){
-        //         if(count($us_data) > 1)
-        //         foreach($us_data->users as $user){
-        //             $data = Order::with('client')->where( 'user->id',$user->id)->latest()->paginate(15);
-        //         }
-        //     }
-
-        // }
-
-        
+                $data =  Order::with('client')->latest()->paginate(15);
+       
+              }
+       
+                else{
+                   $data = Order::whereHas('users', function ($query) {
+                       return $query->where('user_id', '=', Auth::id() );
+                   })->latest()->paginate(15);
+       
+                }
+                
         
         return view('orders.index',compact('data'))
         ->with('i', ($request->input('page', 1) - 1) * 15);
