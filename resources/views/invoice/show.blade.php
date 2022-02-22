@@ -51,7 +51,7 @@
             </div>
          </div>
          <div class="right">
-            <h4>invoice Total</h4>
+            <h4>Invoice Total</h4>
             <p>Tzs. {{ $data->total }}</p>
          </div>
       </div>

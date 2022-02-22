@@ -6,20 +6,22 @@
  
   <div class="sidebar-wrapper" id="sidebar-wrapper">
     <ul class="nav">
+    @hasanyrole('Admin|Accountant')
       <li class="@if ($activePage == 'home') active @endif">
         <a href="{{ route('home') }}">
           <i class="now-ui-icons design_app"></i>
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
-      @can('user-list')
+      @endhasanyrole
+      @hasrole('Admin')
       <li class="@if ($activePage == 'user') active @endif">
               <a href="{{ route('users.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
                 <p> {{ __("User Management") }} </p>
               </a>
             </li>
-      @endcan
+            @endhasrole
 
       <li class = "@if ($activePage == 'order') active @endif">
         <a href="{{ route('orders.index') }}">
@@ -27,31 +29,32 @@
           <p>{{ __('ORDERS') }}</p> 
         </a>
       </li>
+      @hasanyrole('Admin|Designer')
       <li class = "@if ($activePage == 'art') active @endif">
         <a href="{{ route('posts.index',) }}">
           <i class="now-ui-icons location_map-big"></i>
           <p>{{ __('Art Workspace') }}</p> 
         </a>
       </li>
-    
-      @can('completed')
+      @endhasanyrole
+      
+      @hasanyrole('Admin|Accountant')
       <li class = " @if ($activePage == 'completed') active @endif">
         <a href="{{ route('completed') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>
           <p>{{ __('Completed Artworks') }}</p>
         </a>
       </li>
+      @endhasanyrole
 
-      @endcan
-
-
+      @hasanyrole('Admin|Accountant')
       <li class = " @if ($activePage == 'invoice') active @endif">
         <a href="{{ route('invoice.index') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>
           <p>{{ __('Invoice') }}</p>
         </a>
       </li>
-    
+      @endhasanyrole
       <!-- <li class = "">
         <a href="{{ route('page.index','upgrade') }}" class="bg-info">
           <i class="now-ui-icons arrows-1_cloud-download-93"></i>

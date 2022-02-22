@@ -2,9 +2,18 @@
 <html>
 <head>
 <style>
+html{
+   
+}
 
-.row1{
-   width: 100%;
+body{
+   width: 1300px;
+   margin-left: -300px;
+   margin-top: -80px
+   height:700px
+}
+ .row1{
+  
    
 }
 .invoice-container{
@@ -48,18 +57,26 @@
 }
 
 
+
+
 .invoice-container .mini-body .left .left1{
-   float: left;
+ 
    margin-right: 70px;
    margin-left:20px;
+   width: 50%;
 }
 
 .invoice-container .mini-body .left .left2{
-   display: inline-block;
+   position: absolute;
+   display: block;
+   margin-left: 200px;
+   margin-top: -120px;
+   width:40%;
 }
 
 .invoice-container .mini-body .left{
    display: inline-block;
+   width:100%;
 }
 .invoice-container .mini-body .right{
    float: right;
@@ -67,14 +84,18 @@
    position: relative;
 }
 
+
 .invoice-container .mini-body p{
-  height: 5px;
+height: 2px;
 }
 
 .invoice-container .mini-body h4{
-   height: 20px;
-   margin-bottom: 10px;
+   height: 5px;
+ 
  }
+
+
+ 
 
  .max-body {
    margin-top: 50px;
@@ -84,6 +105,7 @@
    left:4%;
    position: relative;
  }
+
 .max-body .min-tab{
   border-top: 3px blue solid;
   width: 100%;
@@ -100,13 +122,19 @@
  }
 
  .max-body .min-tab  tbody tr{
-    border-bottom: 1px solid rgb(221, 217, 217);
+    border-bottom: 2px solid black;
  }
  
  .max-body .min-tab  tbody tr td{
-   padding-left: 10px;
+   padding-left: 65px;
    padding-top: 0px;
  }
+
+
+
+
+
+
  .invoice-container .subtotal1{
      height: 150px;
   }
@@ -136,7 +164,7 @@
 </style>
 
 
-    <title>Hi</title>
+    <title>Invoice</title>
 </head>
 
 <body>
@@ -185,7 +213,7 @@
             </div>
          </div>
          <div class="right">
-            <h4>invoice Total</h4>
+            <h4>Invoice Total</h4>
             <p>Tzs. {{ $total }}</p>
          </div>
       </div>
@@ -197,15 +225,15 @@
           <table class="min-tab">
             <thead>
               <tr>
-                <th width="40%">Description</th>
+                <th >Description</th>
                 <th>Unity Cost</th>
                 <th>Quantity</th>
                 <th>price</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td width="40%">{{$order_title}}</td>
+            <tbody style="border-bottom: 1px solid black;border-top: 1px solid black">
+              <tr >
+                <td>{{$order_title}}</td>
                 <td>{{ $total }}</td>
                 <td>{{$quantity}}</td>
                 <td>{{ $total }} </td>

@@ -15,7 +15,7 @@ use DB;
 class InvoiceController extends Controller
 {
     public function index(Request $request){
-        $data = Invoice::with('order','client','post')->latest()->has('order')->paginate(10);
+        $data = Invoice::with('order','client','post')->latest()->has('order')->has('post')->paginate(10);
         return view('invoice.index',compact('data'))
         ->with('i', ($request->input('page', 1) - 1) * 10);
     }
@@ -27,7 +27,7 @@ class InvoiceController extends Controller
 
 
      public function show($id){
-        $data = Invoice::with('order','user')->find($id);
+        $data = Invoice::with('order','user','post')->has('order')->has('post')->find($id);
         return view("invoice.show",compact('data' ));
 
     }

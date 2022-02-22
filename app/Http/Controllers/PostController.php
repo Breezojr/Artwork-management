@@ -6,10 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Post;
 use App\Models\User;
+use Auth;
 class PostController extends Controller
 {
     public function index(){
-        $data = Post::with('user','order')->has('order')->get();
+        $user = Auth::user();
+        if ($user->hasAnyRole('Admin', 'Accountant')){
+            $data = Post::with('user','order')->has('order')->get();
+          }
+
+          else{
+            $data = Post::with('user','order')->has('order')->where('user_id', '=',Auth::id())->get();
+         }
+       
         return view("posts.index",['data' => $data])
                 ->with('i', (request()->input('page', 1) - 1) * 5);
         
@@ -18,7 +27,11 @@ class PostController extends Controller
 
     public function create(){
         $cid = auth()->user()->id;
-        $orders = Order::where('status',false)->get();
+        // $orders = Order::where('status',false)->get(); 
+        $orders = Order::whereHas('users', function ($query) {
+            return $query->where('user_id', '=', Auth::id())
+                          ->where('status', '=' ,false);
+        })->get();
         return view("posts.create", ['orders'=>$orders]);
     }
 

@@ -15,7 +15,7 @@ class ArtworkController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:completed', ['only' => ['completed']]);
+
       
     }
 

@@ -1,3 +1,9 @@
+.sidebar-wrapper{
+   margin-top: 30px;
+}
+
+
+
 .big-content{
    min-height: 900px;
    width: 100%;
@@ -806,10 +812,7 @@ table tbody .bills a{
    
    }
 
-   .cont-empty1{
-     
-      
-   }
+
 
    .cont-empty1 p{
     text-align: center;

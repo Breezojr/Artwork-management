@@ -15,15 +15,10 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-
         $user = Auth::user();
-    
             if ($user->hasAnyRole('Admin', 'Accountant')){
-
                 $data =  Order::with('client')->latest()->paginate(15);
-       
               }
-       
                 else{
                    $data = Order::whereHas('users', function ($query) {
                        return $query->where('user_id', '=', Auth::id() );
