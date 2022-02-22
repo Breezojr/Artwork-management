@@ -253,10 +253,8 @@ background-color: #1D3C60;
  
  .create .form-group label{
     display: inline-block;
-    width: 10%;
+    width: 15%;
  }
- 
- 
  
  .create .form-group input{
     display: inline-block;
@@ -268,40 +266,78 @@ background-color: #1D3C60;
     display: inline-block;
     width: 80%;
     background-color: antiquewhite;
-    margin-left: 9vw;
+    margin-left: 15%;
     border-radius: 30px;
  }
  
  .create .form-group .descr{
     position: absolute;
     margin-top: 26px;
-    
     display: inline;
  }
 
 
  .create  .checkin {
    margin-top: -30px;
+   margin-left: 200px;
  }
 
-
- .create .form-group .check-cont {
-  margin-bottom: -15px;
-  width: 40%;
-  padding-right: 200px;
-}
-
-
-.create .form-group .check-cont input{
+.create .form-group .checkin input{
    width: 5%;
    padding-right: 200px;
-   margin-left: 200px;
-
+  
  }
+
  
 
 
+ @media screen and (max-width:900px){
+   .create{
+    
+      margin-left: 6vw;
+      
+   }
+  
+   .create .form-group label{
+      display: block;
+   }
+
+   .create .form-group input{
+      display: block;
+   }
+
+   .create .form-group .descr{
+      display: block;
+      position: relative;
+   }
+   .create .form-group textarea{
+      display: block;
+      width: 80%;
+      margin-left: 0;
+   }
+   .create .form-group .check{
+      width: 20%;
+    }
+
+    .create .form-group .checkin input{
+      width: 10%;
+      padding-left: 100px;
+     
+    }
+    
+
+}
  
+
+
+
+
+
+
+
+
+
+
 
 
  
