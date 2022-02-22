@@ -18,7 +18,7 @@ class OrderController extends Controller
 
         $user = Auth::user();
     
-            if ($user->hasRole('Admin') or $user->hasRole('Accountant')){
+            if ($user->hasAnyRole('Admin', 'Accountant')){
 
                 $data =  Order::with('client')->latest()->paginate(15);
        

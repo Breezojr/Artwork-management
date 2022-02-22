@@ -132,7 +132,6 @@
 
  .invoice-container .subtotal .right{
   float: right;
-  
  }
 </style>
 

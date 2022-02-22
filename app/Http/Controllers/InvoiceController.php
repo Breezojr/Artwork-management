@@ -112,14 +112,62 @@ class InvoiceController extends Controller
            
         public function sendEmail(Request $request)
         {
-            
+                    
+                // URL
+                $apiURL = 'https://graph.microsoft.com/v1.0/me/sendMail';
 
-        MsGraph::emails()
-            ->to(['breezojr#gmail.com'])
-            ->subject('the subject')
-            ->body(json_decode('content-type'))
-            ->send();
+                // POST Data
+                $message = [
+                'subject' => 'Meet for lunch?',
+                'body' => ['contentType' => 'Text',"content" => "The new cafeteria is open."],
+                "toRecipients" => [
+                    [
+                      "emailAddress" => [
+                        "address"=>"samanthab@contoso.onmicrosoft.com"
+                      ]
+                    ]
+                  ],
+                ];
+
+                // Headers
+                $headers = [
+                    'Content-type' => 'application/json',
+                    'Authorization' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1yNS1BVWliZkJpaTdOZDFqQmViYXhib1hXMCIsImtpZCI6Ik1yNS1BVWliZkJpaTdOZDFqQmViYXhib1hXMCJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuYXp1cmUuY29tLyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzQ5OTRjZDJlLWM2ZmYtNGUzMS1iN2Q0LTNkNmY4MTBhOGEwMy8iLCJpYXQiOjE2NDU0NTk1MzgsIm5iZiI6MTY0NTQ1OTUzOCwiZXhwIjoxNjQ1NDYzNDM4LCJhaW8iOiJFMlpnWUNoWjgvUFJjL2VKNXNZZnVsZlZYV1VyQlFBPSIsImFwcGlkIjoiNmZiMzM0ZmEtOGIyZi00NjYyLWJlNjktNzQ3YTAwNWEzZDBmIiwiYXBwaWRhY3IiOiIxIiwiaWRwIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvNDk5NGNkMmUtYzZmZi00ZTMxLWI3ZDQtM2Q2ZjgxMGE4YTAzLyIsImlkdHlwIjoiYXBwIiwib2lkIjoiOGQ0ZTcwMzAtZTJjNC00NGNhLTgwMzktNWUxYTYwNjg2NzU4IiwicmgiOiIwLkFVOEFMczJVU2ZfR01VNjMxRDF2Z1FxS0EwWklmM2tBdXRkUHVrUGF3ZmoyTUJOUEFBQS4iLCJzdWIiOiI4ZDRlNzAzMC1lMmM0LTQ0Y2EtODAzOS01ZTFhNjA2ODY3NTgiLCJ0aWQiOiI0OTk0Y2QyZS1jNmZmLTRlMzEtYjdkNC0zZDZmODEwYThhMDMiLCJ1dGkiOiJKaVJPbXpOUGNrS1Y3S1BXdWd6YUFBIiwidmVyIjoiMS4wIiwieG1zX3RjZHQiOjE2NDQ4MzAwNTB9.tGR8tYzIJtb-2McvBaYpp6HSMMU2WAHh53-R1_hCyBXU4FkAkYnqncd4n7Qy-JCYEJLkisktMcz30Opb1hfRiGphOI4fl56RGTFYhKzaoZUc4hoGvU539bNOrX5KSQt2nVfGzFuCdNzKwrSZb0lvXAPG3AOCgE0pUwLQ_sjIygVBqBs7vfeuE4zpMcJep9SCNl-DCt2-NhQIc9VPVLBabIo9NoQGn7mAr90tQsCJX8jnO8Jc2dL-mJbuKWQhrEMpA66o2gpanzFmPaWvfkATjxbjFQzCAwYGbQSGowdHf4NiOFsgT2kX6h-3yIZ5M46hsN5AN2SnoNmJAAmcEwjQrQ',
+                ];
+
+                $client = new \GuzzleHttp\Client();
+                $response = $client->request('POST', $apiURL, ['form_params' => $message, 'headers' => $headers]);
+
+                $responseBody = json_decode($response->getBody(), true);
+
+                echo $statusCode = $response->getStatusCode(); // status code
+
+                dd($responseBody); // body response
+
+
+
         }
+
+
+       
+        // public function sendEmail(Request $request)
+        // {
+        // MsGraph::emails()
+        //     ->to(['breezojr@gmail.com'])
+        //     ->subject('the subject')
+        //     ->body(json_decode('content-type'))
+        //     ->send();
+        // }
+
+
+
+
+       
+
+
+
+
+
 
 
 
