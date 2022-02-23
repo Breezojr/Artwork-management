@@ -1,5 +1,5 @@
 @extends('layouts.app1', [
-    'namePage' => 'Artwork Order',
+    'namePage' => 'INVOICES',
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'art',
     'backgroundImage' => asset('now') . "/img/bg14.jpg",

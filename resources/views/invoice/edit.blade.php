@@ -1,5 +1,5 @@
 @extends('layouts.app3', [
-    'namePage' => 'User Management',
+    'namePage' => 'iNVOICES,
     'class' => 'login-page sidebar-mini ',
     'activePage' => 'art',
     'backgroundImage' => asset('now') . "/img/bg14.jpg",
